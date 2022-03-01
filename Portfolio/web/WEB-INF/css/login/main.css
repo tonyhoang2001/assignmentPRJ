@@ -81,6 +81,10 @@ body {
     font-weight: bold;
 }
 
+#button:hover {
+    background-color: rgb(86, 0, 129);
+}
+
 .signup {
     margin-top: 40px;
     text-align: center;
@@ -93,4 +97,5 @@ body {
 .signup a {
     text-decoration: none;
 }
+
 
