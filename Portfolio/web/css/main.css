@@ -1,0 +1,10 @@
+@font-face { font-family: jsB; src: url("WEB-INF/font/JosefinSans-Bold.ttf"); }
+@font-face { font-family: jsBL; src: url("WEB-INF/font/JosefinSans-BoldItalic.ttf"); }
+@font-face { font-family: jsI; src: url("WEB-INF/font/JosefinSans-Italic.ttf"); }
+@font-face { font-family: jsL; src: url("WEB-INF/font/JosefinSans-Light.ttf"); }
+@font-face { font-family: jsLI; src: url("WEB-INF/font/JosefinSans-LightItalic.ttf"); }
+@font-face { font-family: jsR; src: url("WEB-INF/font/JosefinSans-Regular.ttf"); }
+@font-face { font-family: jsSB; src: url("WEB-INF/font/JosefinSans-SemiBold.ttf"); }
+@font-face { font-family: jsSBI; src: url("WEB-INF/font/JosefinSans-SemiBoldItalic.ttf"); }
+@font-face { font-family: jsT; src: url("WEB-INF/font/JosefinSans-Thin.ttf"); }
+@font-face { font-family: jsTI; src: url("WEB-INF/font/JosefinSans-ThinItalic.ttf"); }

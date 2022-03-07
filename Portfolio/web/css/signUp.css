@@ -1,0 +1,69 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background: rgb(34, 193, 195);
+    background: linear-gradient(86deg, rgba(34, 193, 195, 1) 0%, rgba(217, 38, 198, 1) 100%);
+    font-family: 'jsB','jsBL','jsI','jsL','jsLI','jsR','jsSB','jsSBI','jsT','jsTI','js';
+}
+
+.signup {
+    background-color: white;
+    height: 500px;
+    width: 500px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin-top: 100px;
+    flex-direction: column;
+}
+
+#form-signup {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+#form-signup h1 {
+    color: rgb(0, 214, 196);
+    margin-bottom: 40px;
+}
+
+#name, #pass, #re-pass {
+    border-radius: 20px;
+    border-color: darkorchid;
+    height: 46px;
+    width: 315px;
+    margin-bottom: 18px;
+    text-align: center;
+    font-size: 17px;
+}
+
+#button {
+    background-color: aqua;
+    height: 55px;
+    width: 150px;
+    border-radius: 28px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+}
+
+#button:hover {
+    background-color: rgb(209, 74, 250);
+    cursor: pointer;
+}
+
+#back-login {
+    text-align: center;
+}
+
+#back-login a {
+    margin-top: 10px;
+    color: rgb(0, 219, 219);
+    text-decoration: none;
+}
