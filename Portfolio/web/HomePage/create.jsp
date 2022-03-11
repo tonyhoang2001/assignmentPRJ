@@ -23,7 +23,7 @@
                 <li>
                     <h1>Portfolio Website</h1>
                 </li>
-                <li><a href="">Home</a></li>
+                <li><a href="home.jsp">Home</a></li>
                 <li><a href="create.jsp">Create Portfolio</a></li>
                 <li><a href="">Your Portfolio</a></li>
                 <li><a href="contact.jsp">Contact Us</a></li>
@@ -35,7 +35,7 @@
                     <h4 class="btn" id="user-name" href="">tuanhd</h4>
                     <i id="down" class="fa-solid fa-caret-down"></i>
                     <i id="right" class="fa-solid fa-caret-right"></i>
-                    <a id="logout" href="login.jsp">Log out</a>
+                    <a id="logout" href="../loginPage/login.jsp">Log out</a>
                 </li>
             </ul>
         </header>
