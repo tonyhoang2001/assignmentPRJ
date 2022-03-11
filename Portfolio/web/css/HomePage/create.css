@@ -1,0 +1,216 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 11, 2022, 10:27:50 AM
+    Author     : LTC
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    
+}
+
+header {
+    height: 70px;
+    width: 100vw;
+    background: rgba(89, 165, 255, 1.0);
+    background: -webkit-radial-gradient(top left, rgba(89, 165, 255, 1.0), rgba(108, 251, 82, 1.0));
+    background: -moz-radial-gradient(top left, rgba(89, 165, 255, 1.0), rgba(108, 251, 82, 1.0));
+    background: radial-gradient(to bottom right, rgba(89, 165, 255, 1.0), rgba(108, 251, 82, 1.0));
+    position: fixed;
+    z-index: 1;
+}
+
+header h1 {
+    display: inline-block;
+    color: white;
+    font-size: 30px;
+}
+
+header h1:hover {
+    cursor: pointer;
+}
+
+.nav li a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    
+}
+
+.nav li {
+    display: inline-block;
+    padding: 18px 20px;
+}
+
+
+.acc li {
+    list-style: none;
+}
+
+.acc li a {
+    text-decoration: none;
+    color: black;
+}
+
+.acc img {
+    height: 50px;
+    position: absolute;
+    top: 10px;
+    right: 250px;
+    border-radius: 50px;
+}
+
+#user-name {
+    position: absolute;
+    top: 13px;
+    right: 165px;
+    font-size: 20px;
+}
+
+#logout {
+    position: absolute;
+    top: 20px;
+    right: 77px;
+    font-size: 19px;    
+    color: #0324b2;
+    font-weight: bold;
+    display: none;
+}
+
+#down {
+    font-size: 22px;
+    position: absolute;
+    right: 153px;
+    top: 24px;
+    /* display: none; */
+}
+
+#right {
+    font-size: 22px;
+    position: absolute;
+    right: 155px;
+    top: 25px;
+    display: none;
+}
+
+#acc-name:hover{
+    cursor: pointer;
+    color: rgb(71, 71, 71);
+}
+
+.nav li a:hover {
+    color: rgb(129, 255, 129);
+}
+
+.nav li h1 {
+    color: rgb(246, 255, 116);
+}
+
+.nav li h1:hover {
+    color: rgba(246, 255, 116, 0.9);
+}
+/*--------------------- MAIN ------------*/
+
+ #template {
+    height: 1000px;
+    background-color: rgb(238, 183, 255);
+    padding-top: 100px;
+}
+
+#template h1 {
+    margin-left: 100px;
+    font-size: 30px;margin-bottom: 60px;
+}
+
+.template-list img {
+    width: 400px;
+}
+
+.template-list {
+    text-align: center;
+}
+
+.name-tem {
+    margin-bottom: 20px;
+}
+
+.name-tem {
+    margin-top: 20px;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(0, 7, 3);
+}
+
+.name-tem:hover {
+    color: rgb(87, 87, 87);
+    text-decoration: none;
+}
+
+.img-tem img:hover {
+    opacity: 0.9;
+}
+
+.tem1, .tem2, .tem3, .tem4 {
+    margin-bottom: 120px;
+}
+
+
+
+#why-need {
+    height: 400px;
+    background-color: rgba(106, 255, 121, 1);
+    padding-top: 60px;
+}
+
+#why-need h1 {
+    margin-left: 100px;
+    margin-bottom: 60px;
+}
+
+#sub-need li {
+    margin-left: 150px;
+    margin-bottom: 50px;
+    font-size: 20px;
+}
+/*------------footer-------------------*/
+.footer {
+    height: 200px;
+    background-color: rgba(196, 196, 196, 1);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.f-left h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.f-left i {
+    font-size: 19px;
+    margin-left: 20px;
+}
+
+.f-right #icon {
+    margin-left: 65px;
+    margin-bottom: 20px;
+}
+
+.f-right #icon i {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.f-right > p {
+    font-size: 18px;
+}
