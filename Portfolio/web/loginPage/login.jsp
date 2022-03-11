@@ -11,8 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login Portfolio</title>
-        <!--        <link rel="stylesheet" href="../WEB-INF/css/login.css" type="text/css">-->
-        <link href="../css/login.css" rel="stylesheet" type="text/css">
+        <link href="../css/Login/login.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
@@ -23,8 +22,7 @@
                 <i>"The website for your own information of working"</i>
             </div>
 
-            <div id="image">
-                <!--<img src='<c:url value="../WEB-INF/img/login/avatar.jpg"></c:url>' alt="avatar image"/>-->    
+            <div id="image">  
                 <img src="../img/login/avatar.jpg" alt="avatar image">
             </div>
         </div>

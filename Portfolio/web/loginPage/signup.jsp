@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Sign Up</title>
         <title>Sign Up Portfolio</title>
-        <link rel="stylesheet" href="../css/signUp.css">
+        <link href="../css/Login/signUp.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
@@ -21,7 +21,16 @@
                 <input id="name" type="text" placeholder="Enter User Name"  name="username" required><br>
                 <input id="pass" type="password" placeholder="Enter Password" name="pass" required><br>
                 <input id="re-pass" type="password" placeholder="Re-Enter Password" name="re-pass" required><br>
-                <input id="button" type="button" value="Sign Up">
+
+                <h3 id="sex">Sex: </h3>
+                <label for="sex">Male</label>
+                <input type="radio" name="sex" value="male">
+                <label for="sex" id="female">Female</label>
+                <input type="radio" name="sex" value="female"><br>
+
+                <h3 id="dob">Date Of Birth: </h3>  <input type="date" name="dob"><br> 
+
+                <input id="button" type="submit" value="Sign Up">
             </form>
 
             <div id="back-login">

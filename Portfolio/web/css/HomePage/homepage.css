@@ -1,0 +1,190 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 11, 2022, 8:48:22 AM
+    Author     : LTC
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    
+}
+
+header {
+    height: 70px;
+    width: 100vw;
+    background: rgba(89, 165, 255, 1.0);
+    background: -webkit-radial-gradient(top left, rgba(89, 165, 255, 1.0), rgba(108, 251, 82, 1.0));
+    background: -moz-radial-gradient(top left, rgba(89, 165, 255, 1.0), rgba(108, 251, 82, 1.0));
+    background: radial-gradient(to bottom right, rgba(89, 165, 255, 1.0), rgba(108, 251, 82, 1.0));
+    position: fixed;
+}
+
+header h1 {
+    display: inline-block;
+    color: white;
+}
+
+header h1:hover {
+    cursor: pointer;
+}
+
+.nav li a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    
+}
+
+.nav li {
+    display: inline-block;
+    padding: 13px 20px;
+}
+
+
+.acc li {
+    list-style: none;
+}
+
+.acc li a {
+    text-decoration: none;
+    color: black;
+}
+
+.acc img {
+    height: 50px;
+    position: absolute;
+    top: 10px;
+    right: 250px;
+    border-radius: 50px;
+}
+
+#user-name {
+    position: absolute;
+    top: 25px;
+    right: 177px;
+    font-size: 20px;
+}
+
+#logout {
+    position: absolute;
+    top: 24px;
+    right: 77px;
+    font-size: 19px;    
+    color: #0324b2;
+    font-weight: bold;
+    display: none;
+}
+
+#down {
+    font-size: 22px;
+    position: absolute;
+    right: 153px;
+    top: 24px;
+    /* display: none; */
+}
+
+#right {
+    font-size: 22px;
+    position: absolute;
+    right: 153px;
+    top: 24px;
+    display: none;
+}
+
+#acc-name:hover{
+    cursor: pointer;
+    color: rgb(71, 71, 71);
+}
+
+.nav li a:hover {
+    color: rgb(129, 255, 129);
+}
+
+.nav li h1 {
+    color: rgb(246, 255, 116);
+}
+
+.nav li h1:hover {
+    color: rgba(246, 255, 116, 0.9);
+}
+
+/*--------------------- MAIN ------------*/
+#contact {
+    height: 550px;
+    background-color: rgb(255, 255, 255);
+    padding-top: 110px;
+}
+
+#contact h1 {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+#sub-contact li {
+    margin-bottom: 50px;
+    margin-left: 224px;
+    font-size: 23px;
+    list-style-type: none;
+}
+
+#sub-contact li h3 {
+    display: inline;
+}
+
+#why-need {
+    height: 400px;
+    background-color: rgba(106, 255, 121, 1);
+    padding-top: 60px;
+}
+
+#why-need h1 {
+    margin-left: 100px;
+    margin-bottom: 60px;
+}
+
+#sub-need li {
+    margin-left: 150px;
+    margin-bottom: 50px;
+    font-size: 20px;
+}
+/*------------footer-------------------*/
+.footer {
+    height: 200px;
+    background-color: rgba(196, 196, 196, 1);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.f-left h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.f-left i {
+    font-size: 19px;
+    margin-left: 20px;
+}
+
+.f-right #icon {
+    margin-left: 65px;
+    margin-bottom: 20px;
+}
+
+.f-right #icon i {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.f-right > p {
+    font-size: 18px;
+}

@@ -8,13 +8,13 @@ body {
     justify-content: center;
     background: rgb(34, 193, 195);
     background: linear-gradient(86deg, rgba(34, 193, 195, 1) 0%, rgba(217, 38, 198, 1) 100%);
-    font-family: 'jsB','jsBL','jsI','jsL','jsLI','jsR','jsSB','jsSBI','jsT','jsTI','js';
+    /*font-family: 'jsB','jsBL','jsI','jsL','jsLI','jsR','jsSB','jsSBI','jsT','jsTI','js';*/
 }
 
 .signup {
     background-color: white;
-    height: 500px;
-    width: 500px;
+    height: 600px;
+    width: 600px;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -51,6 +51,7 @@ body {
     font-size: 20px;
     font-weight: bold;
     border: none;
+    margin-top: 30px;
 }
 
 #button:hover {
@@ -66,4 +67,14 @@ body {
     margin-top: 10px;
     color: rgb(0, 219, 219);
     text-decoration: none;
+}
+
+#dob, #sex {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 7px;
+}
+
+#female {
+    margin-left: 10px;
 }

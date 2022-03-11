@@ -80,8 +80,9 @@ body {
 }
 
 #button:hover {
-    background-color: rgb(86, 0, 129);
+    background-color: aqua;
     cursor: pointer;
+    color: black;
 }
 
 .signup {
