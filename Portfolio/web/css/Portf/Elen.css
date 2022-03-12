@@ -1,0 +1,240 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 12, 2022, 10:05:01 AM
+    Author     : LTC
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    width: 25vw;
+    background-color: #f5f5f5;
+    height: 100vh;
+    position: fixed;
+    text-align: center;
+    padding-top: 50px;
+    z-index: 1;
+}
+
+#text-header {
+    font-weight: bold;
+    margin-bottom: 100px;
+}
+
+#nav li {
+    margin-bottom: 18px;
+
+}
+
+#nav li a {
+    color: rgb(173, 173, 173);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#nav li a:hover {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#nav {
+    margin-bottom: 200px;
+}
+
+#back-homepage {
+    color: rgb(126, 82, 247);
+    font-weight: 700;
+}
+
+#back-homepage:hover {
+    color: rgba(126, 82, 247,0.7);
+    text-decoration: none;
+}
+
+main{
+    height: 100%;
+    width: 75vw;
+    margin-left: 25vw;
+}
+
+#home {
+    height: 600px;
+    background-color: rgba(243, 228, 209, 0.945);
+    text-align: center;
+    padding-top: 100px;
+}
+
+#home img {
+    height: 180px;
+    border-radius: 100px;
+    margin-bottom: 17px;
+}
+
+#home h3 {
+    color: rgb(173, 173, 173);
+}
+
+#home h1 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#home h4 {
+    color: rgb(173, 173, 173);
+    font-weight: 500;
+    font-size: 20px;
+}
+
+#home p {
+    color: rgb(173, 173, 173);
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+#skill {
+    height: 300px;
+    padding-top: 60px;
+}
+
+#skill h2 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 80px;
+}
+
+#skill-list li{
+    list-style-type: none;
+    color: rgb(173, 173, 173);
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+#skill-list li:hover{
+    color: black;
+    cursor: pointer;
+}
+
+#skill-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#project {
+    height: 400px;
+    padding-top: 60px;
+    background-color: rgb(215, 250, 238);
+}
+
+#project h2 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 60px;
+}
+
+#project-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 150px;
+}
+
+#project-list li {
+    list-style-type: circle;
+    color: rgb(104, 104, 104);
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+#project-list li:hover {
+    color: black;
+    cursor: pointer;
+}
+
+#contact {
+    height: 400px;
+    padding-top: 60px;
+    background-color: rgb(244, 215, 255);
+}
+
+#contact h2 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 60px;
+}
+
+#contact-list li {
+    list-style-type: none;
+    margin-bottom: 30px;
+    margin-left: 150px;
+}
+
+#contact-list li:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#contact-list li h3,p {
+    display: inline;
+}
+
+#contact-list li h3 {
+    font-size: 20px;
+    margin-left: 6px;
+    font-weight: bold;
+}
+
+#contact-list li p {
+    font-size: 17px;
+    margin-left: 6px;
+    font-weight: 500;color: #000000;
+}
+
+/*------------footer-------------------*/
+.footer {
+    height: 200px;
+    width: 75vw;
+    margin-left: 25vw;
+    background-color: #132238;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+}
+
+.f-left h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.f-left i {
+    font-size: 19px;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.f-right #icon {
+    margin-left: 65px;
+    margin-bottom: 20px;
+}
+
+.f-right #icon i {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.f-right > p {
+    font-size: 18px;
+}

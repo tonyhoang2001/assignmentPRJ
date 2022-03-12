@@ -62,7 +62,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+<!--                    <div class="row">
                         <div class="tem3 col-6">
                             <a class="img-tem" href=""><img title="Click to create this" src="../img/homepage/mark.png" alt="Template 3"></a>
                             <br>
@@ -76,7 +76,7 @@
                             <br>
                             <a class="name-tem" href="">Template 4</a>
                         </div>
-                    </div>
+                    </div>-->
 
                 </div>
 

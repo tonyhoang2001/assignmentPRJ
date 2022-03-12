@@ -13,8 +13,8 @@ body {
 
 .signup {
     background-color: white;
-    height: 600px;
-    width: 600px;
+    height: 570px;
+    width: 570px;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -69,7 +69,7 @@ body {
     text-decoration: none;
 }
 
-#dob, #sex {
+/*#dob, #sex {
     display: inline-block;
     margin-top: 10px;
     margin-right: 7px;
@@ -77,4 +77,4 @@ body {
 
 #female {
     margin-left: 10px;
-}
+}*/

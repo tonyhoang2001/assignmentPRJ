@@ -26,6 +26,7 @@ header {
     background: -moz-radial-gradient(top left, rgba(89, 165, 255, 1.0), rgba(108, 251, 82, 1.0));
     background: radial-gradient(to bottom right, rgba(89, 165, 255, 1.0), rgba(108, 251, 82, 1.0));
     position: fixed;
+    box-shadow: 2px 5px 8px rgba(51, 51, 51, 0.3);
 }
 
 header h1 {

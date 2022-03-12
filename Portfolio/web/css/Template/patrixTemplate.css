@@ -1,0 +1,421 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 12, 2022, 4:23:13 PM
+    Author     : LTC
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    /* Created with https://www.css-gradient.com */
+    background: #F111F7;
+    background: -webkit-linear-gradient(right, #F111F7, #9228DF);
+    background: -moz-linear-gradient(right, #F111F7, #9228DF);
+    background: linear-gradient(to left, #F111F7, #9228DF);
+    height: 60px;
+    position: fixed;
+    z-index: 1;
+    width: 100vw;
+    box-shadow: 2px 5px 8px rgba(51, 51, 51, 0.3);
+}
+
+header h2 {
+    color: white;
+    font-weight: bold;
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+#nav {
+    display: inline-block;
+    margin-left: 250px;
+    line-height: 60px;
+}
+
+#nav li {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+#nav li a {
+    color: rgb(226, 226, 226);
+    font-weight: bold;
+    display: inline-block;
+}
+
+#nav li:hover {
+    background-color: #c756f0;
+    cursor: pointer;
+}
+
+#nav li a:hover {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ---------------------------main--------------------- */
+main {
+    padding-top: 60px;
+}
+
+#about {
+    height: 700px;
+    background: #F111F7;
+    background: -webkit-linear-gradient(right, #F111F7, #9228DF);
+    background: -moz-linear-gradient(right, #F111F7, #9228DF);
+    background: linear-gradient(to left, #F111F7, #9228DF);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.aleft {
+    color: white;
+    width: 400px;
+}
+
+.aleft h2:first-child {
+    display: inline;
+    margin-right: 3px;
+}
+
+.aleft h2 {
+    display: inline;
+    font-weight: bold;
+    font-size: 60px;
+    word-wrap: break-word;
+}
+
+#inputName {
+    margin-top: 15px;
+    margin-left: 7px;
+    border-radius: 30px;
+    padding: 7px 11px;
+    border: 2px solid #efefef;
+}
+
+#gender-label {
+    font-size: 25px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+#gender {
+    border-radius: 11px;
+    margin-left: 9px;
+}
+
+#field{
+    border-radius: 22px;
+    border: none;
+    padding: 5px 8px;
+    margin-bottom: 14px;
+}
+
+#inputDes{
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    width: 300px;
+    height: 169px;
+    text-align: center;
+    margin-top: 21px;
+}
+
+#skill-list li input {
+    border-radius: 10px;
+    padding: 0 6px;
+    border: 1px solid #870ee2;
+    margin-bottom: 12px;
+    font-size: 19px;
+}
+
+#project-list li input {
+    border-radius: 10px;
+    padding: 0 6px;
+    border: 1px solid #870ee2;
+    margin-bottom: 12px;
+    font-size: 19px;
+}
+
+#contact-list li input {
+    border-radius: 10px;
+    padding: 0 6px;
+    border: 1px solid #870ee2;
+    margin-bottom: 12px;
+    font-size: 19px;
+    margin-left: 9px;
+}
+
+.aleft p {
+    font-size: 30px;
+    font-weight: 300;
+    margin-top: 30px;
+}
+
+.aright {
+    height: 300px;
+    width: 300px;
+    box-shadow: 2px 5px 8px rgba(51, 51, 51, 0.7);
+}
+
+.aright img {
+    height: 100%;
+}
+
+#skill {
+    padding-top: 40px;
+}
+
+.scontainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 70px;
+}
+
+#skill > h2{
+    font-weight: bold;
+    font-size: 50px;
+    letter-spacing: 3px;
+    color: #d686f3;
+    text-align: center;
+}
+
+.sleft {
+    margin-left: 150px;
+}
+
+.sleft i, .sleft h2 {
+    color: #9926f0;
+}
+
+.sleft > h2 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.sleft > i {
+    font-size: 40px;
+}
+
+
+#skill-list {
+    list-style-type: circle;
+    color: #aa4af2;
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+.sright {
+    height: 300px;
+    width: 300px;
+
+}
+
+.sright img {
+    height: 100%;
+    box-shadow: 2px 5px 8px rgba(255, 117, 255, 0.7);
+}
+
+#project {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 310px;
+}
+
+.pleft {
+    width: 300px;
+    height: 300px;
+
+}
+
+.pleft img {
+    height: 100%;
+    box-shadow: 2px 5px 8px rgba(99, 135, 253, 0.7);
+}
+
+.pright i, .pright h2{
+    color: #9926f0;
+}
+
+.pright > h2 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.pright > i {
+    font-size: 40px;
+}
+
+
+#project-list {
+    list-style-type: circle;
+    color: #aa4af2;
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+#contact {
+    margin-top: 310px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.cleft > i, .cleft h2{
+    color: #9926f0;
+}
+
+.cleft > h2 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.cleft > i {
+    font-size: 40px;
+}
+
+#contact-list {
+    list-style-type: none;
+    margin-top: 30px;
+}
+
+#contact-list i {
+    font-size: 20px;
+    margin-right: 5px;
+    color: #ac69df;
+    margin-top: 20px;
+}
+
+#contact-list h3 {
+    color: #ac69df;
+    font-size: 20px;
+}
+
+#contact-list p {
+    color: #8f34d4;
+    font-size: 17px;
+}
+
+
+#contact-list li h3, #contact-list li p {
+    display: inline;
+}
+
+
+.cright {
+    width: 300px;
+    height: 300px;
+
+}
+
+.cright img {
+    height: 100%;
+    box-shadow: 2px 5px 8px rgba(255, 117, 255, 0.7);
+}
+
+#name-portf {
+    border-radius: 10px;
+    margin-left: 651px;
+    padding: 7px;
+}
+
+#btn-form {
+    background-color: #fba1ff;
+    margin-left: 706px;
+    width: 88px;
+    height: 48px;
+    color: white;
+    font-weight: bold;
+    border-radius: 13px;
+    border: 2px solid #979797;
+    margin-bottom: 52px;
+}
+
+#btn-form:hover {
+    cursor: pointer;
+    background-color: rgba(251, 161, 255, 0.7);
+}
+
+#save-form {
+    background-color: #a1ffa5;
+    margin-left: 622px;
+    width: 88px;
+    height: 48px;
+    color: black;
+    font-weight: bold;
+    border-radius: 13px;
+    border: 2px solid #979797;
+    margin-bottom: 52px;
+}
+
+#save-form:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+#undo-form {
+    background-color: #feffa1;
+    margin-left: 78px;
+    width: 88px;
+    height: 48px;
+    color: black;
+    font-weight: bold;
+    border-radius: 13px;
+    border: 2px solid #979797;
+    margin-bottom: 52px;
+}
+
+#undo-form:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+
+/*------------footer-------------------*/
+.footer {
+    height: 200px;
+    background-color: #132238;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+}
+
+.f-left h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.f-left i {
+    font-size: 19px;
+    margin-left: 20px;
+}
+
+.f-right #icon {
+    margin-left: 65px;
+    margin-bottom: 20px;
+}
+
+.f-right #icon i {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.f-right > p {
+    font-size: 18px;
+}
