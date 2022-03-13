@@ -23,19 +23,19 @@
                 <li>
                     <h1>Portfolio Website</h1>
                 </li>
-                <li><a href="home.jsp">Home</a></li>
+                <li><a href="HomeServlet">Home</a></li>
                 <li><a href="create.jsp">Create Portfolio</a></li>
-                <li><a href="">Your Portfolio</a></li>
+                <li><a href="viewPortServlet">Your Portfolio</a></li>
                 <li><a href="contact.jsp">Contact Us</a></li>
             </ul>
             
             <ul class="acc">
-                <li><img src="../img/homepage/avatar.jpg" alt="avatar"></li>
+                <li><img src="img/avatar.jpg" alt="avatar"></li>
                 <li id="acc-name">
-                    <h4 class="btn" id="user-name" href="">tuanhd</h4>
+                    <h4 class="btn" id="user-name">${account.getUsername()}</h4>
                     <i id="down" class="fa-solid fa-caret-down"></i>
                     <i id="right" class="fa-solid fa-caret-right"></i>
-                    <a id="logout" href="../loginPage/login.jsp">Log out</a>
+                    <a id="logout" href="login.jsp">Log out</a>
                 </li>
             </ul>
         </header>
@@ -48,35 +48,19 @@
                 <div class="template-list">
                     <div class="row">
                         <div class="tem1 col-6">
-                            <a class="img-tem" href=""><img title="Click to create this" src="../img/homepage/patrix.png" alt="Template 1"></a>
+                            <a class="img-tem" href="patrixTemplate.jsp"><img title="Click to create this" src="img/patrix.png" alt="Template 1"></a>
                             <br>
                             <br>
-                            <a class="name-tem" href="">Template 1</a>
+                            <a class="name-tem" href="patrixTemplate.jsp">Template 1</a>
                         </div>
 
                         <div class="tem2 col-6">
-                            <a class="img-tem" href=""><img title="Click to create this" src="../img/homepage/elen.png" alt="Template 2"></a>
+                            <a class="img-tem" href="ElenTemplate.jsp"><img title="Click to create this" src="img/elen.png" alt="Template 2"></a>
                             <br>
                             <br>
-                            <a class="name-tem" href="">Template 2</a>
+                            <a class="name-tem" href="ElenTemplate.jsp">Template 2</a>
                         </div>
                     </div>
-
-<!--                    <div class="row">
-                        <div class="tem3 col-6">
-                            <a class="img-tem" href=""><img title="Click to create this" src="../img/homepage/mark.png" alt="Template 3"></a>
-                            <br>
-                            <br>
-                            <a class="name-tem" href="">Template 3</a>
-                        </div>
-
-                        <div class="tem4 col-6">
-                            <a class="img-tem" href=""><img title="Click to create this" src="../img/homepage/satner.png" alt="Template 4"></a>
-                            <br>
-                            <br>
-                            <a class="name-tem" href="">Template 4</a>
-                        </div>
-                    </div>-->
 
                 </div>
 
@@ -113,7 +97,7 @@
 
         </footer>
 
-        <script src="../js/homepage.js" type="text/javascript"></script>
+        <script src="js/homepage.js" type="text/javascript"></script>
 
     </body>
 </html>

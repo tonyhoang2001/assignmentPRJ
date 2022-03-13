@@ -27,29 +27,28 @@
                 <li><a href="#project">Project</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <a id="back-homepage" href="../HomePage/home.jsp">
-                <--- Back To Home Page</a>
+            <a id="back-homepage" href="viewPortServlet">
+                <--- Back to Your List</a>
         </header>
 
         <main>
             <!-- home -->
             <div id="home">
-                <img src="../img/Elen/default.png" alt="">
+                <img src="img/default.png" alt="">
                 <h3>Hello, I'm</h3>
-                <h1>Hoang Danh Tuan</h1>
-                <h4>Male</h4>
-            <h4>Ky thuat Phan Mem</h4>
-                <p>I am a Developer in Java and FullStack</p>
+                <h1>${name}</h1>
+                <h4>${gender}</h4>
+            <h4>${field}</h4>
+                <p>${des}</p>
             </div>
 
             <!-- skill -->
             <div id="skill">
                 <h2>Skills In My Career</h2>
                 <ul id="skill-list">
-                    <li>Framework Spring Boot</li>
-                    <li>Photoshop</li>
-                    <li>Visual Studio Code</li>
-                    <li>Adope Premiere Pro</li>
+                    <li>${skill1}</li>
+                    <li>${skill2}</li>
+                    <li>${skill3}</li>
                 </ul>
             </div>
 
@@ -57,9 +56,9 @@
             <div id="project">
                 <h2>Projects</h2>
                 <ul id="project-list">
-                    <li>Techmely</li>
-                    <li>SomeThing I Wrote</li>
-                    <li>Smart House</li>
+                    <li>${project1}</li>
+                    <li>${project2}</li>
+                    <li>${project3}</li>
                 </ul>
             </div>
 
@@ -70,17 +69,17 @@
                     <li>
                         <i class="fa-solid fa-location-dot"></i>
                         <h3>Address:</h3>
-                        <p>Bac Giang</p>
+                        <p>${address}</p>
                     </li>
                     <li>
                         <i class="fa-solid fa-phone"></i>
                         <h3>Phone: </h3>
-                        <p>037974837</p>
+                        <p>${phone}</p>
                     </li>
                     <li>
                         <i class="fa-solid fa-envelope"></i>
                         <h3>Email:</h3>
-                        <p>tuandh@gmail.com</p>
+                        <p>${email}</p>
                     </li>
                 </ul>
             </div>

@@ -25,7 +25,7 @@
                 <li><a href="#skill">Skill</a></li>
                 <li><a href="#project">Project</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="../HomePage/home.jsp">Back to Home Page</a></li>
+                <li><a href="viewPortServlet">Back to Your List</a></li>
             </ul>
         </header>
 
@@ -34,14 +34,14 @@
             <div id="about">
                 <div class="aleft">
                     <h2>Hey, I'm</h2>
-                    <h2> Hoang Danh Tuan</h2>
-                    <h4>Male</h4>
-                    <h4>Ky thuat Phan Mem</h4>
-                    <p>I am a Developer in Java and a Fullstack Website</p>
+                    <h2>${name}</h2>
+                    <h4>${gender}</h4>
+                    <h4>${field}</h4>
+                    <p>${des}</p>
                 </div>
 
                 <div class="aright">
-                    <img src="../img/Patrix/default.png" alt="">
+                    <img src="img/default.png" alt="">
                 </div>
 
             </div>
@@ -53,30 +53,30 @@
                         <i class="fa-solid fa-book"></i>
                         <h2>Skill</h2>
                         <ul id="skill-list">
-                            <li>Photoshop</li>
-                            <li>Spring Boot</li>
-                            <li>Bootstrap</li>
+                            <li>${skill1}</li>
+                            <li>${skill2}</li>
+                            <li>${skill3}</li>
                         </ul>
                     </div>
 
                     <div class="sright">
-                        <img src="../img/Patrix/skill.png" alt="skill">
+                        <img src="img/skill.png" alt="skill">
                     </div>
                 </div>
             </div>
 
             <div id="project">
                 <div class="pleft">
-                    <img src="../img/Patrix/project.jpg" alt="">
+                    <img src="img/project.jpg" alt="">
                 </div>
 
                 <div class="pright">
                     <i class="fa-solid fa-briefcase"></i>
                     <h2>Project</h2>
                     <ul id="project-list">
-                        <li>Techmely</li>
-                        <li>Youtube</li>
-                        <li>Amazone</li>
+                        <li>${project1}</li>
+                        <li>${project2}</li>
+                        <li>${project3}</li>
                     </ul>
                 </div>
 
@@ -90,26 +90,26 @@
                         <li>
                             <i class="fa-solid fa-location-dot"></i>
                             <h3>Address: </h3>
-                            <p>Bac Giang, Viet Nam</p>
+                            <p>${address}</p>
                         </li>
 
                         <li>
                             <i class="fa-solid fa-phone"></i>
                             <h3>Phone: </h3>
-                            <p>9483958566</p>
+                            <p>${phone}</p>
                         </li>
 
                         <li>
                             <i class="fa-solid fa-envelope"></i>
                             <h3>Email: </h3>
-                            <p>tuanhd@gmail.com</p>
+                            <p>${email}</p>
                         </li>
 
                     </ul>
                 </div>
 
                 <div class="cright">
-                    <img src="../img/Patrix/contact.png" alt="contact">
+                    <img src="img/contact.png" alt="contact">
                 </div>
             </div>
 

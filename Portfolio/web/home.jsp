@@ -27,9 +27,9 @@
                 <li>
                     <h1>Portfolio Website</h1>
                 </li>
-                <li><a href="home.jsp">Home</a></li>
+                <li><a href="HomeServlet">Home</a></li>
                 <li><a href="create.jsp">Create Portfolio</a></li>
-                <li><a href="">Your Portfolio</a></li>
+                <li><a href="viewPortServlet">Your Portfolio</a></li>
                 <li><a href="contact.jsp">Contact Us</a></li>
             </ul>
 

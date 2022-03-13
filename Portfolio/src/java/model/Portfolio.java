@@ -18,8 +18,8 @@ public class Portfolio {
     public Portfolio() {
     }
 
-    public Portfolio(int IDPortf, String NamePortf, int IDAcc, int IDTem) {
-        this.IDPortf = IDPortf;
+    public Portfolio(String NamePortf, int IDAcc, int IDTem) {
+        
         this.NamePortf = NamePortf;
         this.IDAcc = IDAcc;
         this.IDTem = IDTem;

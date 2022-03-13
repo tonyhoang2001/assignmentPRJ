@@ -25,13 +25,13 @@
                 <li><a href="#skill">Skill</a></li>
                 <li><a href="#project">Project</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="home.jsp">Back to Home Page</a></li>
+                <li><a href="../HomePage/home.jsp">Back to Home Page</a></li>
             </ul>
         </header>
 
 
         <main>
-            <form method="post" action="CreateServlet?id=1">
+            <form method="post" action="">
                 <div id="about">
                     <div class="aleft">
                         <h2>Hey, I'm</h2>
@@ -41,7 +41,7 @@
                         <select name="gender" id="gender" required>
                             <option value="0">Female</option>
                             <option value="1">Male</option>
-                        </select> *
+                        </select>
                         <br>
                         <input id="field" type="text" name="field" placeholder="Your Field (Job)" required> *
                         <br>
@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="aright">
-                        <img src="img/default.png" alt="default">
+                        <img src="../img/Patrix/default.png" alt="">
                     </div>
 
                 </div>
@@ -68,14 +68,14 @@
                         </div>
 
                         <div class="sright">
-                            <img src="img/skill.png" alt="skill">
+                            <img src="../img/Patrix/skill.png" alt="skill">
                         </div>
                     </div>
                 </div>
 
                 <div id="project">
                     <div class="pleft">
-                        <img src="img/project.jpg" alt="">
+                        <img src="../img/Patrix/project.jpg" alt="">
                     </div>
 
                     <div class="pright">
@@ -117,15 +117,16 @@
                     </div>
 
                     <div class="cright">
-                        <img src="img/contact.png" alt="contact">
+                        <img src="../img/Patrix/contact.png" alt="contact">
                     </div>
                 </div>
 
                 <input id="name-portf" type="text" name="namePortf" placeholder="Name your Portfolio" required=""> *
                 <br><br>
-                <p style="color: green;text-align: center">${message}</p> 
-                <br><br>
                 <input id="btn-form" type="submit" value="Create">
+                
+                <input id="save-form" type="submit" value="Save">
+                <input id="undo-form" type="reset" value="Undo">
             </form>
         </main>
 
