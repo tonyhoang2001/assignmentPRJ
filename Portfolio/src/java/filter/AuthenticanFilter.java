@@ -113,71 +113,80 @@ public class AuthenticanFilter implements Filter {
 
         HttpServletRequest httpReq = (HttpServletRequest) request;
         HttpServletResponse httpRes = (HttpServletResponse) response;
-        //check co cookie hay khong
-        Cookie[] cookies = httpReq.getCookies();
 
-        String url = httpReq.getServletPath();
+        HttpSession session = httpReq.getSession();
+        Object o = session.getAttribute("account");
+        if (o != null) {
+            Account account = (Account) o;
+            session.setAttribute("account", account);
+            chain.doFilter(request, response);
+            return;
+        } else {
+            //check co cookie hay khong
+            Cookie[] cookies = httpReq.getCookies();
 
-        if (cookies != null) {
-            String Username = null, Password = null;
-            for (Cookie cooky : cookies) {
-                if (cooky.getName().equals("Username")) {
-                    Username = cooky.getValue();
+            String url = httpReq.getServletPath();
+
+            if (cookies != null) {
+                String Username = null, Password = null;
+                for (Cookie cooky : cookies) {
+                    if (cooky.getName().equals("Username")) {
+                        Username = cooky.getValue();
+                    }
+                    if (cooky.getName().equals("Password")) {
+                        Password = cooky.getValue();
+                    }
                 }
-                if (cooky.getName().equals("Password")) {
-                    Password = cooky.getValue();
+                if (Username != null && Password != null) {
+                    DBContext db = new DBContext();
+                    Account account = db.getAccountByUsername(Username);
+                    session.setAttribute("account", account);
+
+                    if (url.contains("home.jsp")) {
+                        httpReq.getRequestDispatcher("HomeServlet").forward(request, response);
+                        return;
+                    }
+
+                    if (url.contains("create.jsp")) {
+                        httpReq.getRequestDispatcher("CreateServlet").forward(request, response);
+                        return;
+                    }
+
+                    if (url.contains("contact.jsp")) {
+                        chain.doFilter(request, response);
+                        return;
+                    }
+
+                } else {
+                    if (url.contains(".png") || url.contains(".jpg") || url.contains(".css") || url.contains("homepage.js")) {
+                        chain.doFilter(request, response);
+                        return;
+                    }
+
+                    if (url.contains("signup.jsp")) {
+                        chain.doFilter(request, response);
+                        return;
+                    }
+
+                    if (url.contains("Servlet")) {
+                        chain.doFilter(request, response);
+                        return;
+                    }
+
+                    httpReq.getRequestDispatcher("login.jsp").forward(request, response);
+                    return;
                 }
             }
-            if (Username != null && Password != null) {
-                HttpSession session = httpReq.getSession();
-                DBContext db = new DBContext();
-                Account account = db.getAccountByUsername(Username);
-                session.setAttribute("account", account);
-                
-                if (url.contains("home.jsp")){
-                    httpReq.getRequestDispatcher("HomeServlet").forward(request, response);
-                    return;
-                }
-                
-                if (url.contains("create.jsp")){
-                    httpReq.getRequestDispatcher("CreateServlet").forward(request, response);
-                    return;
-                }
-                
-                if (url.contains("contact.jsp")){
-                    chain.doFilter(request, response);
-                    return;
-                }
-                
-            } else {
-                if (url.contains(".png") || url.contains(".jpg") || url.contains(".css") || url.contains("homepage.js")) {
-                    chain.doFilter(request, response);
-                    return;
-                }
 
-                if (url.contains("signup.jsp")) {
-                    chain.doFilter(request, response);
-                    return;
-                }
-                
-                if (url.contains("Servlet")) {
-                    chain.doFilter(request, response);
-                    return;
-                }
-
-                httpReq.getRequestDispatcher("login.jsp").forward(request, response);
+            if (url.contains("login") || url.contains("/LoginServlet")) {
+                chain.doFilter(request, response);
                 return;
             }
-        }
 
-        if (url.contains("login") || url.contains("/LoginServlet")) {
-            chain.doFilter(request, response);
-            return;
-        }
-
-        if (url.contains(".png") || url.contains(".jpg") || url.contains(".css") || url.contains(".js")) {
-            chain.doFilter(request, response);
-            return;
+            if (url.contains(".png") || url.contains(".jpg") || url.contains(".css") || url.contains(".js")) {
+                chain.doFilter(request, response);
+                return;
+            }
         }
 
         Throwable problem = null;

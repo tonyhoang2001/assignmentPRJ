@@ -70,15 +70,15 @@ header h1:hover {
 
 #user-name {
     position: absolute;
-    top: 25px;
-    right: 177px;
+    top: 12px;
+    right: 171px;
     font-size: 20px;
 }
 
 #logout {
     position: absolute;
-    top: 24px;
-    right: 77px;
+    top: 20px;
+    right: 70px;
     font-size: 19px;    
     color: #0324b2;
     font-weight: bold;

@@ -122,10 +122,8 @@ public class LoginServlet extends HttpServlet {
                     response.addCookie(password);
                 }
                 HttpSession session = request.getSession();
-                List<Account> accounts = db.getAllAccount();
                 session.setAttribute("account", account);
-                session.setAttribute("accounts", accounts);
-                request.getRequestDispatcher("home.jsp").forward(request, response);
+                request.getRequestDispatcher("HomeServlet").forward(request, response);
                 return;
             }
         }

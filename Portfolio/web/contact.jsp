@@ -30,12 +30,12 @@
             </ul>
             
             <ul class="acc">
-                <li><img src="../img/homepage/avatar.jpg" alt="avatar"></li>
+                <li><img src="img/avatar.png" alt="avatar"></li>
                 <li id="acc-name">
-                    <h4 class="btn" id="user-name" href="">tuanhd</h4>
+                    <h4 class="btn" id="user-name">${account.getUsername()}</h4>
                     <i id="down" class="fa-solid fa-caret-down"></i>
                     <i id="right" class="fa-solid fa-caret-right"></i>
-                    <a id="logout" href="../loginPage/login.jsp">Log out</a>
+                    <a id="logout" href="login.jsp">Log out</a>
                 </li>
             </ul>
         </header>
@@ -91,7 +91,7 @@
 
         </footer>
         
-        <script src="../js/homepage.js" type="text/javascript"></script>
+        <script src="js/homepage.js" type="text/javascript"></script>
         
     </body>
 </html>

@@ -134,7 +134,7 @@ header h1:hover {
 }
 
 #sjob-list {
-    width: 111px;
+    width: 140px;
     height: 33px;
     border-radius: 14px;
     background-color: #a8d5fd;
@@ -261,6 +261,13 @@ header h1:hover {
     background-color: #35ed35;
     color: #000000;
     text-decoration: none;
+}
+
+.page-index a.active {
+    background-color: #35ed35;
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 #why-need {

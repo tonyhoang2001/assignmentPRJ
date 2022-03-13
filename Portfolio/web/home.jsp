@@ -4,6 +4,8 @@
     Author     : LTC
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Field"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -34,7 +36,7 @@
             <ul class="acc">
                 <li><img src="img/avatar.png" alt="avatar"></li>
                 <li id="acc-name">
-                    <h4 class="btn" id="user-name" href="">${account.getUsername()}</h4>
+                    <h4 class="btn" id="user-name">${account.getUsername()}</h4>
                     <i id="down" class="fa-solid fa-caret-down"></i>
                     <i id="right" class="fa-solid fa-caret-right"></i>
                     <a id="logout" href="login.jsp">Log out</a>
@@ -46,23 +48,35 @@
             <!-- Search form -->
             <div class="search">
 
-                <form id="search-form" action="">
+                <form id="search-form" action="HomeServlet?index=1" method="POST" >
                     <div class="search-job">
                         <h3 class="search-field">Job:</h3>
                         <!-- search by job -->
                         <select name="job" id="sjob-list">
                             <option value="0">All</option>
-                            <option value="1">KTPM</option>
-                            <option value="2">Marketing</option>
+                            <%
+                                ArrayList<Field> fieldList = (ArrayList<Field>) session.getAttribute("fieldList");
+                                int indexField = (Integer) session.getAttribute("indexField");
+                                for (Field field : fieldList) {
+                                    String selected = (field.getKey() == indexField) ? "selected" : "";
+                            %>
+                            <option <%= selected %> value="<%= field.getKey() %>"><%= field.getName() %></option>
+                            <% } %>
                         </select>
                     </div>
 
                     <div class="search-sex">
                         <h3 class="search-field">Sex:</h3>
+                        <% String gender = (String) session.getAttribute("gender"); 
+                           boolean t = gender.equals("male");
+                        %>
                         <!-- search by sex -->
-                        <input type="radio" value="all" name="sex"> All
-                        <input type="radio" value="male" name="sex"> Male
-                        <input type="radio" value="female" name="sex"> Female
+                        <input type="radio" <% if(gender.equals("all")){ %> checked="" <% } %> 
+                               value="all" name="sex"> All
+                        <input type="radio" <% if(gender.equals("male")){ %> checked="" <% } %> 
+                               value="male" name="sex"> Male
+                        <input type="radio" <% if(gender.equals("female")){ %> checked="" <% } %> 
+                               value="female" name="sex"> Female
                     </div>
 
                     <button class="search-btn" type="submit">Search</button>
@@ -82,81 +96,57 @@
                     </div>
                 </c:if>
 
-
-
                 <div class="paging-container">
-                    <c:if test="${accounts != null}">
-                        
-                        <div class="paging-two">
-                            <div class="paging-portfolio row" title="Click to see more">
-                                <!-- avatar -->
-                                <div class="paging-avatar col-5">
-                                    <img src="img/default.png" alt="avatar">
-                                </div>
-                                <!-- infor -->
-                                <div class="paging-infor col-7">
-                                    <h3>Hoang Danh Tuan</h3>
-                                    <p>Lap trinh vien Java</p>
-                                    <p>Ha Noi</p>
-                                </div>
-                            </div>
+                    <c:if test="${listPaging != null}">
 
-                            <div class="paging-portfolio row" title="Click to see more">
-                                <!-- avatar -->
-                                <div class="paging-avatar col-5">
-                                    <img src="img/default.png" alt="avatar">
+                        <div class="paging-two">
+
+                            <c:forEach items="${listPaging}" var="portfolio" begin="0" end="1">
+                                <div class="paging-portfolio row" title="Click to see more">
+                                    <!-- avatar -->
+                                    <div class="paging-avatar col-5">
+                                        <img src="img/default.png" alt="avatar">
+                                    </div>
+                                    <!-- infor -->
+                                    <div class="paging-infor col-7">
+                                        <h3>${portfolio.getNameUser()}</h3>
+                                        <p>${portfolio.getField()}</p>
+                                        <p>${portfolio.getAddress()}</p>
+                                    </div>
                                 </div>
-                                <!-- infor -->
-                                <div class="paging-infor col-7">
-                                    <h3>Hoang Danh Tuan</h3>
-                                    <p>Lap trinh vien Java</p>
-                                    <p>Ha Noi</p>
-                                </div>
-                            </div>
+                            </c:forEach>
 
                         </div>
 
-
                         <div class="paging-two">
-                            <div class="paging-portfolio  row" title="Click to see more">
-                                <!-- avatar -->
-                                <div class="paging-avatar col-5">
-                                    <img src="img/default.png" alt="avatar">
-                                </div>
-                                <!-- infor -->
-                                <div class="paging-infor col-7">
-                                    <h3>Hoang Danh Tuan</h3>
-                                    <p>Lap trinh vien Java</p>
-                                    <p>Ha Noi</p>
-                                </div>
-                            </div>
 
-                            <div class="paging-portfolio row"  title="Click to see more">
-                                <!-- avatar -->
-                                <div class="paging-avatar col-5">
-                                    <img src="img/default.png" alt="avatar">
+                            <c:forEach items="${listPaging}" var="portfolio" begin="2" end="3">
+                                <div class="paging-portfolio row" title="Click to see more">
+                                    <!-- avatar -->
+                                    <div class="paging-avatar col-5">
+                                        <img src="img/default.png" alt="avatar">
+                                    </div>
+                                    <!-- infor -->
+                                    <div class="paging-infor col-7">
+                                        <h3>${portfolio.getNameUser()}</h3>
+                                        <p>${portfolio.getField()}</p>
+                                        <p>${portfolio.getAddress()}</p>
+                                    </div>
                                 </div>
-                                <!-- infor -->
-                                <div class="paging-infor col-7">
-                                    <h3>Hoang Danh Tuan</h3>
-                                    <p>Lap trinh vien Java</p>
-                                    <p>Ha Noi</p>
-                                </div>
-                            </div>
+                            </c:forEach>
 
                         </div>
+
                     </c:if>
-                    <c:if test="${accounts == null}">
-                        <h3>There is no Portfolio to see</h3>
+                    <c:if test="${listPaging.size() == 0}">
+                        <h3 style="position: absolute;">There is no Portfolio to see</h3>
                     </c:if>
                 </div>
 
-
                 <div class="page-index">
-                    <a href="">1</a>
-                    <a href="">2</a>
-                    <a href="">3</a>
-                    <a href="">4</a>
+                    <c:forEach begin="1" end="${endPage}" var="i">
+                        <a class="${activeIndex == i ? "active" : ""}" href="HomeServlet?index=${i}">${i}</a>
+                    </c:forEach>
                 </div>
 
             </div>
