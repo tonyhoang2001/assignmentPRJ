@@ -10,18 +10,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import model.Account;
 
 /**
  *
  * @author LTC
  */
-public class LoginServlet extends HttpServlet {
+public class SignupServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,11 +38,10 @@ public class LoginServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CheckLoginServlet</title>");
+            out.println("<title>Servlet Signup</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CheckLoginServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h1>day la check login</h1>");
+            out.println("<h1>Servlet Signup at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,27 +59,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-//        //check co cookie hay khong
-//        Cookie[] cookies = request.getCookies();
-//
-//        if (cookies != null) {
-//            String Username = null, Password = null;
-//            for (Cookie cooky : cookies) {
-//                if (cooky.getName().equals("Username")) {
-//                    Username = cooky.getValue();
-//                }
-//                if (cooky.getName().equals("Password")) {
-//                    Password = cooky.getValue();
-//                }
-//            }
-//            if (Username != null && Password != null) {
-//                request.getRequestDispatcher("home.jsp").forward(request, response);
-//                return;
-//            }
-//        }
-        
-        response.sendRedirect("login.jsp");
+        processRequest(request, response);
     }
 
     /**
@@ -96,41 +73,24 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        DBContext db = new DBContext();
 
-        String Username = request.getParameter("username");
-        String Password = request.getParameter("password");
-        String remember = request.getParameter("remember");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
 
-
-        if (Username.length() < 5 || Password.length() < 5) {
-            request.setAttribute("message", "username or password must contain at least 5 characters!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+        Account account = db.getAccountByUsername(username);
+        if (account != null) {
+            request.setAttribute("messageErr", "username existed! Choose another name");
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
             return;
         }
+        
+        Account accountInsert = new Account(username, password, false);
+        db.insertAccount(accountInsert);
 
-        DBContext db = new DBContext();
-        Account account = db.getAccountByUsername(Username);
-        if (account != null) {
-            if (account.getPassword().equals(Password)) {
-                if (remember != null) {
-                    Cookie username = new Cookie("Username", Username);
-                    Cookie password = new Cookie("Password", Password);
-                    username.setMaxAge(60 * 60 * 24 * 7);
-                    password.setMaxAge(60 * 60 * 24 * 7);
-                    response.addCookie(username);
-                    response.addCookie(password);
-                }
-                HttpSession session = request.getSession();
-                List<Account> accounts = db.getAllAccount();
-                session.setAttribute("account", account);
-                session.setAttribute("accounts", accounts);
-                request.getRequestDispatcher("home.jsp").forward(request, response);
-                return;
-            }
-        }
-        request.setAttribute("message", "username or password is not correct!");
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        request.setAttribute("messageSucc", "Register successfully!");
+        request.getRequestDispatcher("signup.jsp").forward(request, response);
+
     }
 
     /**

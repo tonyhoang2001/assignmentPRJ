@@ -12,7 +12,6 @@ package model;
 public class PortfolioDetail {
 
     private int IDDetail;
-    private int IDPortf;
     private String NameUser;
     private boolean Gender;
     private String Description;
@@ -22,13 +21,14 @@ public class PortfolioDetail {
     private String Address;
     private long Phone;
     private String Email;
+    private Portfolio portfolio;
+    private Account account;
+    private Template template;
 
     public PortfolioDetail() {
     }
 
-    public PortfolioDetail(int IDDetail, int IDPortf, String NameUser, boolean Gender, String Description, String Field, String Skill, String Project, String Address, long Phone, String Email) {
-        this.IDDetail = IDDetail;
-        this.IDPortf = IDPortf;
+    public PortfolioDetail(String NameUser, boolean Gender, String Description, String Field, String Skill, String Project, String Address, long Phone, String Email, Portfolio portfolio, Account account, Template template) {
         this.NameUser = NameUser;
         this.Gender = Gender;
         this.Description = Description;
@@ -38,6 +38,9 @@ public class PortfolioDetail {
         this.Address = Address;
         this.Phone = Phone;
         this.Email = Email;
+        this.portfolio = portfolio;
+        this.account = account;
+        this.template = template;
     }
 
     public int getIDDetail() {
@@ -46,14 +49,6 @@ public class PortfolioDetail {
 
     public void setIDDetail(int IDDetail) {
         this.IDDetail = IDDetail;
-    }
-
-    public int getIDPortf() {
-        return IDPortf;
-    }
-
-    public void setIDPortf(int IDPortf) {
-        this.IDPortf = IDPortf;
     }
 
     public String getNameUser() {
@@ -127,6 +122,32 @@ public class PortfolioDetail {
     public void setEmail(String Email) {
         this.Email = Email;
     }
+
+    public Portfolio getPortfolio() {
+        return portfolio;
+    }
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public Template getTemplate() {
+        return template;
+    }
+
+    public void setTemplate(Template template) {
+        this.template = template;
+    }
+
+    
     
     
 }

@@ -25,7 +25,7 @@
             </div>
 
             <div id="image">  
-                <img src="img/login/avatar.jpg" alt="avatar"/>
+                <img src="img/avatar.jpg" alt="avatar"/>
             </div>
         </div>
 

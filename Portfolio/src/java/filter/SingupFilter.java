@@ -5,44 +5,39 @@
  */
 package filter;
 
-import DAO.DBContext;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.List;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Account;
 
 /**
  *
  * @author LTC
  */
-public class AuthenticanFilter implements Filter {
-
+public class SingupFilter implements Filter {
+    
     private static final boolean debug = true;
 
     // The filter configuration object we are associated with.  If
     // this value is null, this filter instance is not currently
     // configured. 
     private FilterConfig filterConfig = null;
-
-    public AuthenticanFilter() {
-    }
-
+    
+    public SingupFilter() {
+    }    
+    
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("AuthenticanFilter:DoBeforeProcessing");
+            log("SingupFilter:DoBeforeProcessing");
         }
 
         // Write code here to process the request and/or response before
@@ -65,12 +60,12 @@ public class AuthenticanFilter implements Filter {
 	    log(buf.toString());
 	}
          */
-    }
-
+    }    
+    
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("AuthenticanFilter:DoAfterProcessing");
+            log("SingupFilter:DoAfterProcessing");
         }
 
         // Write code here to process the request and/or response after
@@ -104,82 +99,32 @@ public class AuthenticanFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-
+        
         if (debug) {
-            log("AuthenticanFilter:doFilter()");
+            log("SingupFilter:doFilter()");
         }
-
+        
         doBeforeProcessing(request, response);
-
+        
         HttpServletRequest httpReq = (HttpServletRequest) request;
         HttpServletResponse httpRes = (HttpServletResponse) response;
-        //check co cookie hay khong
-        Cookie[] cookies = httpReq.getCookies();
-
-        String url = httpReq.getServletPath();
-
-        if (cookies != null) {
-            String Username = null, Password = null;
-            for (Cookie cooky : cookies) {
-                if (cooky.getName().equals("Username")) {
-                    Username = cooky.getValue();
-                }
-                if (cooky.getName().equals("Password")) {
-                    Password = cooky.getValue();
-                }
-            }
-            if (Username != null && Password != null) {
-                HttpSession session = httpReq.getSession();
-                DBContext db = new DBContext();
-                Account account = db.getAccountByUsername(Username);
-                session.setAttribute("account", account);
-                
-                if (url.contains("home.jsp")){
-                    httpReq.getRequestDispatcher("HomeServlet").forward(request, response);
-                    return;
-                }
-                
-                if (url.contains("create.jsp")){
-                    httpReq.getRequestDispatcher("CreateServlet").forward(request, response);
-                    return;
-                }
-                
-                if (url.contains("contact.jsp")){
-                    chain.doFilter(request, response);
-                    return;
-                }
-                
-            } else {
-                if (url.contains(".png") || url.contains(".jpg") || url.contains(".css") || url.contains("homepage.js")) {
-                    chain.doFilter(request, response);
-                    return;
-                }
-
-                if (url.contains("signup.jsp")) {
-                    chain.doFilter(request, response);
-                    return;
-                }
-                
-                if (url.contains("Servlet")) {
-                    chain.doFilter(request, response);
-                    return;
-                }
-
-                httpReq.getRequestDispatcher("login.jsp").forward(request, response);
-                return;
-            }
-        }
-
-        if (url.contains("login") || url.contains("/LoginServlet")) {
-            chain.doFilter(request, response);
+        
+        String username = httpReq.getParameter("username");
+        String password = httpReq.getParameter("password");
+        String repass = httpReq.getParameter("re-pass");
+        
+        if (username.length() < 5 || password.length() < 5){
+            httpReq.setAttribute("messageErr", "username and password must be >= 5");
+            httpReq.getRequestDispatcher("signup.jsp").forward(request, response);
             return;
         }
-
-        if (url.contains(".png") || url.contains(".jpg") || url.contains(".css") || url.contains(".js")) {
-            chain.doFilter(request, response);
+        
+        if (!password.equals(repass)) {
+            httpReq.setAttribute("messageErr", "Re-Enter password must be equal password");
+            httpReq.getRequestDispatcher("signup.jsp").forward(request, response);
             return;
         }
-
+        
         Throwable problem = null;
         try {
             chain.doFilter(request, response);
@@ -190,7 +135,7 @@ public class AuthenticanFilter implements Filter {
             problem = t;
             t.printStackTrace();
         }
-
+        
         doAfterProcessing(request, response);
 
         // If there was a problem, we want to rethrow it if it is
@@ -225,17 +170,17 @@ public class AuthenticanFilter implements Filter {
     /**
      * Destroy method for this filter
      */
-    public void destroy() {
+    public void destroy() {        
     }
 
     /**
      * Init method for this filter
      */
-    public void init(FilterConfig filterConfig) {
+    public void init(FilterConfig filterConfig) {        
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
-            if (debug) {
-                log("AuthenticanFilter:Initializing filter");
+            if (debug) {                
+                log("SingupFilter:Initializing filter");
             }
         }
     }
@@ -246,27 +191,27 @@ public class AuthenticanFilter implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("AuthenticanFilter()");
+            return ("SingupFilter()");
         }
-        StringBuffer sb = new StringBuffer("AuthenticanFilter(");
+        StringBuffer sb = new StringBuffer("SingupFilter(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());
     }
-
+    
     private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);
-
+        String stackTrace = getStackTrace(t);        
+        
         if (stackTrace != null && !stackTrace.equals("")) {
             try {
                 response.setContentType("text/html");
                 PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);
+                PrintWriter pw = new PrintWriter(ps);                
                 pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
 
                 // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");
-                pw.print(stackTrace);
+                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");                
+                pw.print(stackTrace);                
                 pw.print("</pre></body>\n</html>"); //NOI18N
                 pw.close();
                 ps.close();
@@ -283,7 +228,7 @@ public class AuthenticanFilter implements Filter {
             }
         }
     }
-
+    
     public static String getStackTrace(Throwable t) {
         String stackTrace = null;
         try {
@@ -297,9 +242,9 @@ public class AuthenticanFilter implements Filter {
         }
         return stackTrace;
     }
-
+    
     public void log(String msg) {
-        filterConfig.getServletContext().log(msg);
+        filterConfig.getServletContext().log(msg);        
     }
-
+    
 }

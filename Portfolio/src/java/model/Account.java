@@ -15,8 +15,7 @@ public class Account {
     private String Password;
     private boolean isAdmin;
 
-    public Account(int IDAcc, String Username, String Password, boolean isAdmin) {
-        this.IDAcc = IDAcc;
+    public Account(String Username, String Password, boolean isAdmin) {
         this.Username = Username;
         this.Password = Password;
         this.isAdmin = isAdmin;

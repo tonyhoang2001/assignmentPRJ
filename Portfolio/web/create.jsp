@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create Portfolio</title>
-        <link href="css/HomePage/create.css" rel="stylesheet" type="text/css"/>
+        <link href="css/create.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
               integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <!--Import font awesome-->
@@ -113,7 +113,7 @@
 
         </footer>
 
-        <script src="../js/HomePage/homepage.js" type="text/javascript"></script>
+        <script src="../js/homepage.js" type="text/javascript"></script>
 
     </body>
 </html>
