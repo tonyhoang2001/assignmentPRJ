@@ -1,6 +1,6 @@
 <%-- 
-    Document   : create
-    Created on : Mar 11, 2022, 10:26:34 AM
+    Document   : newjsp
+    Created on : Mar 11, 2022, 8:45:21 AM
     Author     : LTC
 --%>
 
@@ -9,15 +9,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Create Portfolio</title>
-        <link href="../css/HomePage/create.css" rel="stylesheet" type="text/css"/>
+        <title>Contact Us</title>
+        <link href="css/HomePage/contact.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <!--Import font awesome-->
         <script src="https://kit.fontawesome.com/563c930a8f.js" crossorigin="anonymous"></script>
     </head>
     <body>
-
+        
         <header>
             <ul class="nav">
                 <li>
@@ -41,45 +41,22 @@
         </header>
 
         <main>
-            
-            <div id="template">
-                <h1>Choose A Template</h1>
-
-                <div class="template-list">
-                    <div class="row">
-                        <div class="tem1 col-6">
-                            <a class="img-tem" href=""><img title="Click to create this" src="../img/homepage/patrix.png" alt="Template 1"></a>
-                            <br>
-                            <br>
-                            <a class="name-tem" href="">Template 1</a>
-                        </div>
-
-                        <div class="tem2 col-6">
-                            <a class="img-tem" href=""><img title="Click to create this" src="../img/homepage/elen.png" alt="Template 2"></a>
-                            <br>
-                            <br>
-                            <a class="name-tem" href="">Template 2</a>
-                        </div>
-                    </div>
-
-<!--                    <div class="row">
-                        <div class="tem3 col-6">
-                            <a class="img-tem" href=""><img title="Click to create this" src="../img/homepage/mark.png" alt="Template 3"></a>
-                            <br>
-                            <br>
-                            <a class="name-tem" href="">Template 3</a>
-                        </div>
-
-                        <div class="tem4 col-6">
-                            <a class="img-tem" href=""><img title="Click to create this" src="../img/homepage/satner.png" alt="Template 4"></a>
-                            <br>
-                            <br>
-                            <a class="name-tem" href="">Template 4</a>
-                        </div>
-                    </div>-->
-
-                </div>
-
+            <div id="contact">
+                <h1>CONTACT US</h1>
+                <ul id="sub-contact">
+                    <li>
+                        <h3>Address: </h3> Hoa Lac HighTech, Thach That, Ha Noi, Viet Nam
+                    </li>
+                    <li>
+                        <h3>Phone: </h3> 0123456789
+                    </li>
+                    <li>
+                        <h3>Email:</h3> portfolio.vn@gmai.com
+                    </li>
+                    <li>
+                        <h3>Fanpage:</h3> Portfolio VN
+                    </li>
+                </ul>
             </div>
 
             <div id="why-need">
@@ -90,6 +67,7 @@
                     <li>Be more active to find the job</li>
                 </ul>
             </div>
+
         </main>
 
         <footer>
@@ -112,8 +90,8 @@
             </div>
 
         </footer>
-
+        
         <script src="../js/HomePage/homepage.js" type="text/javascript"></script>
-
+        
     </body>
 </html>

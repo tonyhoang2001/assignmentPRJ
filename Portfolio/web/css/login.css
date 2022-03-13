@@ -6,7 +6,7 @@
 body {
     background: rgb(34, 193, 195);
     background: linear-gradient(86deg, rgba(34, 193, 195, 1) 0%, rgba(217, 38, 198, 1) 100%);
-/*    font-family: 'jsB','jsBL','jsI','jsL','jsLI','jsR','jsSB','jsSBI','jsT','jsTI','js';*/
+    /*font-family: 'jsB','jsBL','jsI','jsL','jsLI','jsR','jsSB','jsSBI','jsT','jsTI','js';*/
 }
 
 #login-header-left{
