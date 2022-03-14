@@ -36,7 +36,7 @@
         %>
         
         <main>
-            <form id="form" method="POST" action="UpdateCrudServlet?idPD=${idPD}">
+            <form id="form" method="POST" action="UpdateServlet?idPD=${idPD}">
                 <!-- home -->
                 <div id="home">
                     <img src="img/default.png" alt="">

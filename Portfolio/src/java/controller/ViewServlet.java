@@ -8,6 +8,7 @@ package controller;
 import DAO.DBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +21,7 @@ import model.PortfolioDetail;
  *
  * @author LTC
  */
-public class ViewCrudServlet extends HttpServlet {
+public class ViewServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,7 +35,7 @@ public class ViewCrudServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
         String idString = request.getParameter("id");
         int idPDT = Integer.parseInt(idString);
 
@@ -42,7 +43,7 @@ public class ViewCrudServlet extends HttpServlet {
         Account account = (Account) session.getAttribute("account");
 
         DBContext db = new DBContext();
-        PortfolioDetail pdt = db.getPDTByIDPD(idPDT);
+        PortfolioDetail pdt = db.getPDTByIDPDHome( idPDT);
 
         String name = pdt.getNameUser();
         boolean gender = pdt.isGender();
@@ -116,6 +117,7 @@ public class ViewCrudServlet extends HttpServlet {
         session.setAttribute("address", address);
         session.setAttribute("phone", phone);
         session.setAttribute("email", email);
+        session.setAttribute("account", account);
 
         //patrix
         if (pdt.getTemplate().getIDTem() == 1) {
@@ -128,7 +130,7 @@ public class ViewCrudServlet extends HttpServlet {
             request.getRequestDispatcher("Elen.jsp").forward(request, response);
             return;
         }
-
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

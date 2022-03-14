@@ -45,7 +45,7 @@ public class UpdateCrudServlet extends HttpServlet {
         Account account = (Account) session.getAttribute("account");
 
         DBContext db = new DBContext();
-        PortfolioDetail pdt = db.getPDTByIDPD(account.getIDAcc(), idPDT);
+        PortfolioDetail pdt = db.getPDTByIDPD(idPDT);
         
         int idPD = pdt.getIDDetail();
         String name = pdt.getNameUser();
@@ -172,7 +172,7 @@ public class UpdateCrudServlet extends HttpServlet {
         Account account = (Account) session.getAttribute("account");
 
         DBContext db = new DBContext();
-        PortfolioDetail pdt = db.getPDTByIDPD(account.getIDAcc(), idPDT);
+        PortfolioDetail pdt = db.getPDTByIDPD(idPDT);
         
         int idTem = pdt.getTemplate().getIDTem();
         int idPortf = pdt.getPortfolio().getIDPortf();

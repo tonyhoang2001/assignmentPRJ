@@ -15,7 +15,7 @@ and open the template in the editor.
 }
 
 body {
-    
+
 }
 
 header {
@@ -44,7 +44,7 @@ header h1:hover {
     text-decoration: none;
     color: white;
     font-size: 20px;
-    
+
 }
 
 .nav li {
@@ -200,11 +200,11 @@ header h1:hover {
     border-radius: 15px;
     padding: 50px 15px;
     margin-top: 50px;
+    position: relative;
 }
 
 .paging-portfolio:hover {
-    cursor: pointer;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .paging-left {
@@ -255,6 +255,16 @@ header h1:hover {
     height: 40px;
     padding: 5px;
     font-size: 19px;
+}
+
+.crud-admin {
+    position: absolute;
+    top: 12px;
+    left: 30px;
+}
+
+.crud-admin a{
+    margin-right: 15px;
 }
 
 .page-index a:hover {

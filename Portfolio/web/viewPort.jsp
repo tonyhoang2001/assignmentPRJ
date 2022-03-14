@@ -68,7 +68,7 @@
                                 <div class="crud-admin">
                                     <a class="view" href="ViewCrudServlet?id=${portfolio.getIDDetail()}">View</a>
                                     <a class="update" href="UpdateCrudServlet?id=${portfolio.getIDDetail()}">Edit</a>
-                                    <a class="delete" href="">Delete</a>
+                                    <a class="delete" href="DeleteCrudServlet?id=${portfolio.getIDDetail()}">Delete</a>
                                 </div>
 
                             </div>
@@ -93,7 +93,7 @@
                                 <div class="crud-admin">
                                     <a class="view" href="ViewCrudServlet?id=${portfolio.getIDDetail()}">View</a>
                                     <a class="update" href="UpdateCrudServlet?id=${portfolio.getIDDetail()}">Edit</a>
-                                    <a class="delete" href="">Delete</a>
+                                    <a class="delete" href="DeleteCrudServlet?id=${portfolio.getIDDetail()}">Delete</a>
                                 </div>
 
                             </div>
@@ -130,13 +130,13 @@
                 </div>
             </div>
         </footer>
-        <a href="../HomePage/contact.jsp"></a>
+       
+        
         <script>
-
             const deletes = document.querySelectorAll('.delete')
-            for (deleteT of deletes) {
-                deleteT.addEventListener("click", function () {
-                    window.open("../HomePage/home.jsp")
+            for (d of deletes) {
+                d.addEventListener("click", function () {
+                    window.confirm("Are you sure to delete this?")
                 })
             }
         </script>

@@ -60,22 +60,22 @@
                                 for (Field field : fieldList) {
                                     String selected = (field.getKey() == indexField) ? "selected" : "";
                             %>
-                            <option <%= selected %> value="<%= field.getKey() %>"><%= field.getName() %></option>
+                            <option <%= selected%> value="<%= field.getKey()%>"><%= field.getName()%></option>
                             <% } %>
                         </select>
                     </div>
 
                     <div class="search-sex">
                         <h3 class="search-field">Sex:</h3>
-                        <% String gender = (String) session.getAttribute("gender"); 
-                           boolean t = gender.equals("male");
+                        <% String gender = (String) session.getAttribute("gender");
+                            boolean t = gender.equals("male");
                         %>
                         <!-- search by sex -->
-                        <input type="radio" <% if(gender.equals("all")){ %> checked="" <% } %> 
+                        <input type="radio" <% if (gender.equals("all")) { %> checked="" <% } %> 
                                value="all" name="sex"> All
-                        <input type="radio" <% if(gender.equals("male")){ %> checked="" <% } %> 
+                        <input type="radio" <% if (gender.equals("male")) { %> checked="" <% } %> 
                                value="male" name="sex"> Male
-                        <input type="radio" <% if(gender.equals("female")){ %> checked="" <% } %> 
+                        <input type="radio" <% if (gender.equals("female")) { %> checked="" <% }%> 
                                value="female" name="sex"> Female
                     </div>
 
@@ -87,14 +87,6 @@
             <!-- Show portfolio by paging -->
             <div class="paging">
                 <h2><i class="fa-solid fa-star paging-star"></i> People</h2>
-
-                <c:if test="${account.isIsAdmin()==true}">
-                    <!-- CRUD ADMIN -->
-                    <div class="crud">
-                        <i class="fa-solid fa-gear"></i>
-                        <a href="crudAdmin.jsp">Edit-Delete All</a>
-                    </div>
-                </c:if>
 
                 <div class="paging-container">
                     <c:if test="${listPaging != null}">
@@ -113,6 +105,18 @@
                                         <p>${portfolio.getField()}</p>
                                         <p>${portfolio.getAddress()}</p>
                                     </div>
+
+
+                                    <div class="crud-admin">
+                                        <a class="view" href="ViewServlet?id=${portfolio.getIDDetail()}">View</a>
+                                        
+                                        <c:if test="${account.isIsAdmin()==true}">
+                                            <a class="update" href="UpdateServlet?id=${portfolio.getIDDetail()}">Edit</a>
+                                            <a class="delete" onclick="Delete()" href="DeleteServlet?id=${portfolio.getIDDetail()}">Delete</a>
+                                        </c:if>
+                                            
+                                    </div>
+
                                 </div>
                             </c:forEach>
 
@@ -131,6 +135,16 @@
                                         <h3>${portfolio.getNameUser()}</h3>
                                         <p>${portfolio.getField()}</p>
                                         <p>${portfolio.getAddress()}</p>
+                                    </div>
+
+                                    <div class="crud-admin">
+                                        <a class="view" href="ViewServlet?id=${portfolio.getIDDetail()}">View</a>
+                                        
+                                        <c:if test="${account.isIsAdmin()==true}">
+                                            <a class="update" href="UpdateServlet?id=${portfolio.getIDDetail()}">Edit</a>
+                                            <a class="delete" onclick="Delete()" href="DeleteServlet?id=${portfolio.getIDDetail()}">Delete</a>
+                                        </c:if>
+                                            
                                     </div>
                                 </div>
                             </c:forEach>
@@ -183,10 +197,10 @@
         </footer>
 
         <script>
-            const seePortfs = document.querySelectorAll('.paging-portfolio')
-            for (see of seePortfs) {
-                see.addEventListener("click", function () {
-                    window.open("create.jsp")
+            const deletes = document.querySelectorAll('.delete')
+            for (d of deletes) {
+                d.addEventListener("click", function () {
+                    window.confirm("Are you sure to delete this?")
                 })
             }
         </script>

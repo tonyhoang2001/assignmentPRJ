@@ -34,7 +34,7 @@
         %>
 
         <main>
-            <form method="post" action="UpdateCrudServlet?idPD=${idPD}">
+            <form method="post" action="UpdateServlet?idPD=${idPD}">
                 <div id="about">
                     <div class="aleft">
                         <h2>Hey, I'm</h2>

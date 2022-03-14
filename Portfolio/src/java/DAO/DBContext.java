@@ -576,20 +576,19 @@ public class DBContext {
         return 0;
     }
 
-    public PortfolioDetail getPDTByIDPD(int idAcc, int idPD) {
+    public PortfolioDetail getPDTByIDPD(int idPD) {
         PortfolioDetail pdt = new PortfolioDetail();
         String query = "SELECT IDDetail,NamePortf,NameUser,Field,Gender,Address,Phone,Email,Description,Skill,Project,IDTem,Name,IDAcc,Username,Password,isAdmin \n"
                 + "  FROM \n"
                 + "  (SELECT ROW_NUMBER() OVER (ORDER BY IDDetail ASC) as rownum,a.IDDetail,b.NamePortf, a.NameUser,a.Field,a.Gender,a.Address,a.Phone,a.Email,\n"
                 + "  a.Description,a.Skill,a.Project,c.IDTem,c.Name,d.IDAcc,d.Username,d.Password,d.isAdmin\n"
                 + "  FROM PortfolioDetail a, Portfolio b, Template c, Account d WHERE a.IDPortf = b.IDPortf and b.IDTem = c.IDTem and b.IDAcc = d.IDAcc "
-                + "AND b.IDAcc = ? AND a.IDDetail = ?) \n"
+                + "AND a.IDDetail = ?) \n"
                 + "  as Paging ";
 
         try {
             stm = connection.prepareStatement(query);
-            stm.setInt(1, idAcc);
-            stm.setInt(2, idPD);
+            stm.setInt(1, idPD);
 
             ResultSet rs = stm.executeQuery();
 
@@ -670,5 +669,83 @@ public class DBContext {
         }
 
     }
+    
+    public PortfolioDetail getPDTByIDPDHome(int idPD) {
+        PortfolioDetail pdt = new PortfolioDetail();
+        String query = "SELECT IDDetail,NamePortf,NameUser,Field,Gender,Address,Phone,Email,Description,Skill,Project,IDTem,Name,IDAcc,Username,Password,isAdmin \n"
+                + "  FROM \n"
+                + "  (SELECT ROW_NUMBER() OVER (ORDER BY IDDetail ASC) as rownum,a.IDDetail,b.NamePortf, a.NameUser,a.Field,a.Gender,a.Address,a.Phone,a.Email,\n"
+                + "  a.Description,a.Skill,a.Project,c.IDTem,c.Name,d.IDAcc,d.Username,d.Password,d.isAdmin\n"
+                + "  FROM PortfolioDetail a, Portfolio b, Template c, Account d WHERE a.IDPortf = b.IDPortf and b.IDTem = c.IDTem and b.IDAcc = d.IDAcc "
+                + "AND a.IDDetail = ?) \n"
+                + "  as Paging ";
 
+        try {
+            stm = connection.prepareStatement(query);
+            stm.setInt(1, idPD);
+
+            ResultSet rs = stm.executeQuery();
+
+            while (rs.next()) {
+
+                pdt.setIDDetail(rs.getInt("IDDetail"));
+                pdt.setNameUser(rs.getString("NameUser"));
+                pdt.setField(rs.getString("Field"));
+                pdt.setGender(rs.getBoolean("Gender"));
+                pdt.setAddress(rs.getString("Address"));
+                pdt.setPhone(rs.getLong("Phone"));
+                pdt.setEmail(rs.getString("Email"));
+                pdt.setDescription(rs.getString("Description"));
+                pdt.setSkill(rs.getString("Skill"));
+                pdt.setProject(rs.getString("Project"));
+
+                Portfolio p = new Portfolio();
+                p.setNamePortf(rs.getString("NamePortf"));
+
+                Template t = new Template();
+                t.setIDTem(rs.getInt("IDTem"));
+                t.setName(rs.getString("Name"));
+
+                Account a = new Account();
+                a.setIDAcc(rs.getInt("IDAcc"));
+                a.setUsername(rs.getString("Username"));
+                a.setPassword(rs.getString("Password"));
+                a.setIsAdmin(rs.getBoolean("isAdmin"));
+
+                pdt.setAccount(a);
+                pdt.setPortfolio(p);
+                pdt.setTemplate(t);
+
+                return pdt;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+    
+    public void deletePD(int idPD){
+        String query = "DELETE FROM PortfolioDetail WHERE IDDetail = ?";
+        try {
+            stm =connection.prepareCall(query);
+            stm.setInt(1, idPD);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void deleteP(int idP){
+        String query = "DELETE FROM Portfolio WHERE IDPortf = ?";
+        try {
+            stm =connection.prepareCall(query);
+            stm.setInt(1, idP);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+ 
 }

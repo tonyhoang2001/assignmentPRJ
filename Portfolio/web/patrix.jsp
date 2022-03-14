@@ -25,7 +25,7 @@
                 <li><a href="#skill">Skill</a></li>
                 <li><a href="#project">Project</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="viewPortServlet">Back to Your List</a></li>
+                <li><a href="HomeServlet">Back to HomePage</a></li>
             </ul>
         </header>
 

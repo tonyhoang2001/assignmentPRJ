@@ -27,8 +27,8 @@
                 <li><a href="#project">Project</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <a id="back-homepage" href="viewPortServlet">
-                <--- Back to Your List</a>
+            <a id="back-homepage" href="HomeServlet">
+                <--- Back To HomePage</a>
         </header>
 
         <main>

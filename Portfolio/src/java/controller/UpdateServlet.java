@@ -14,13 +14,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
+import model.Portfolio;
 import model.PortfolioDetail;
+import model.Template;
 
 /**
  *
  * @author LTC
  */
-public class ViewCrudServlet extends HttpServlet {
+public class UpdateServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,7 +36,7 @@ public class ViewCrudServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
         String idString = request.getParameter("id");
         int idPDT = Integer.parseInt(idString);
 
@@ -43,7 +45,8 @@ public class ViewCrudServlet extends HttpServlet {
 
         DBContext db = new DBContext();
         PortfolioDetail pdt = db.getPDTByIDPD(idPDT);
-
+        
+        int idPD = pdt.getIDDetail();
         String name = pdt.getNameUser();
         boolean gender = pdt.isGender();
         String field = pdt.getField();
@@ -53,6 +56,7 @@ public class ViewCrudServlet extends HttpServlet {
         String address = pdt.getAddress();
         long phone = pdt.getPhone();
         String email = pdt.getEmail();
+        String namePortf = pdt.getPortfolio().getNamePortf();
 
         String skill1 = "";
         String skill2 = "";
@@ -102,7 +106,8 @@ public class ViewCrudServlet extends HttpServlet {
         } else {
             genderString = "Male";
         }
-
+        
+        session.setAttribute("idPD", idPD);
         session.setAttribute("name", name);
         session.setAttribute("gender", genderString);
         session.setAttribute("field", field);
@@ -116,19 +121,20 @@ public class ViewCrudServlet extends HttpServlet {
         session.setAttribute("address", address);
         session.setAttribute("phone", phone);
         session.setAttribute("email", email);
+        session.setAttribute("namePortf", namePortf);
 
         //patrix
         if (pdt.getTemplate().getIDTem() == 1) {
-            request.getRequestDispatcher("patrix.jsp").forward(request, response);
+            request.getRequestDispatcher("patrixEdit.jsp").forward(request, response);
             return;
         }
 
         //elen
         if (pdt.getTemplate().getIDTem() == 2) {
-            request.getRequestDispatcher("Elen.jsp").forward(request, response);
+            request.getRequestDispatcher("ElenEdit.jsp").forward(request, response);
             return;
         }
-
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -157,7 +163,69 @@ public class ViewCrudServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        String idPDString = request.getParameter("idPD");
+        int idPDT = Integer.parseInt(idPDString);
+        
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("account");
+
+        DBContext db = new DBContext();
+        PortfolioDetail pdt = db.getPDTByIDPD(idPDT);
+        
+        int idTem = pdt.getTemplate().getIDTem();
+        int idPortf = pdt.getPortfolio().getIDPortf();
+
+        String name = request.getParameter("name");
+        String genderString = request.getParameter("gender");
+        String field = request.getParameter("field");
+        String des = request.getParameter("des");
+        String skill1 = request.getParameter("skill1");
+        String skill2 = request.getParameter("skill2");
+        String skill3 = request.getParameter("skill3");
+        String project1 = request.getParameter("project1");
+        String project2 = request.getParameter("project2");
+        String project3 = request.getParameter("project3");
+        String address = request.getParameter("address");
+        String phoneString = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String namePortf = request.getParameter("namePortf");
+
+        boolean gender = false;
+        if (genderString.equals("0")) {
+            gender = false;
+        }
+        if (genderString.equals("1")) {
+            gender = true;
+        }
+
+        String skill = skill1 + "-" + skill2 + "-" + skill3;
+        String project = project1 + "-" + project2 + "-" + project3;
+        long phone = Long.parseLong(phoneString);
+
+        int IDAcc = account.getIDAcc();
+
+        Portfolio p = new Portfolio(namePortf, IDAcc, idTem);
+        Template t = db.getTemplateByID(idTem);
+        PortfolioDetail pdAdd = new PortfolioDetail(name, gender, des, field, skill, project,
+                address, phone, email, p, account, t);
+        
+        db.updatePDT(pdAdd);
+        db.updateP(pdAdd);
+        
+        session.setAttribute("account", account);
+        request.setAttribute("message", "Create successfully!");
+        
+        if (idTem == 1){
+            request.getRequestDispatcher("patrixEdit.jsp").forward(request, response);
+            return;
+        }
+        
+        if (idTem == 2){
+            request.getRequestDispatcher("ElenEdit.jsp").forward(request, response);
+            return;
+        }
+        
     }
 
     /**
