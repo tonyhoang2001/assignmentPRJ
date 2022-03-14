@@ -17,6 +17,15 @@
         <script src="https://kit.fontawesome.com/563c930a8f.js" crossorigin="anonymous"></script>
     </head>
     <body>
+        
+        <%
+            String message = (String) session.getAttribute("messsage");
+            if (message != null) {
+        %>
+        <script>
+            window.alert(message);
+        </script>
+        <% } %>
 
         <header>
             <h2>Portfolio</h2>

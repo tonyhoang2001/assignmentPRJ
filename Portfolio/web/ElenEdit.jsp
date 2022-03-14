@@ -4,6 +4,7 @@
     Author     : LTC
 --%>
 
+<%@page import="com.sun.java.swing.plaf.windows.resources.windows"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,8 +16,20 @@
               integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <!--Import font awesome-->
         <script src="https://kit.fontawesome.com/563c930a8f.js" crossorigin="anonymous"></script>
+        
+        
+        
     </head>
     <body>
+        
+        <%
+            String message = (String) session.getAttribute("messsage");
+            if (message != null) {
+        %>
+        <script>
+            window.alert(message);
+        </script>
+        <% } %>
 
         <header>
             <h2 id="text-header">Portfolio</h2>
@@ -99,8 +112,7 @@
                     </ul>
                 </div>
                         <input id="name-portf" type="text" value="${namePortf}" name="namePortf" placeholder="Name your Portfolio" required=""> * <br><br>
-                <!--<input id="btn-form" type="submit" value="Create">-->
-                <p style="color: green">${message}</p>
+                
                 <input id="save-form" type="submit" value="Save">
                 <input id="undo-form" type="reset" value="Undo">
             </form>

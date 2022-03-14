@@ -125,9 +125,9 @@ public class DBContext {
 
     public ArrayList<PortfolioDetail> paging(int pageIndex, int pageSize) {
         ArrayList<PortfolioDetail> listPaging = new ArrayList<>();
-        String query = "SELECT IDDetail,NamePortf,NameUser,Field,Gender,Address,Phone,Email,Description,Skill,Project,IDTem,Name,IDAcc,Username,Password,isAdmin \n"
+        String query = "SELECT IDDetail,IDPortf,NamePortf,NameUser,Field,Gender,Address,Phone,Email,Description,Skill,Project,IDTem,Name,IDAcc,Username,Password,isAdmin \n"
                 + "  FROM \n"
-                + "  (SELECT ROW_NUMBER() OVER (ORDER BY IDDetail ASC) as rownum,a.IDDetail,b.NamePortf, a.NameUser,a.Field,a.Gender,a.Address,a.Phone,a.Email,\n"
+                + "  (SELECT ROW_NUMBER() OVER (ORDER BY IDDetail ASC) as rownum,a.IDDetail,a.IDPortf,b.NamePortf, a.NameUser,a.Field,a.Gender,a.Address,a.Phone,a.Email,\n"
                 + "  a.Description,a.Skill,a.Project,c.IDTem,c.Name,d.IDAcc,d.Username,d.Password,d.isAdmin\n"
                 + "  FROM PortfolioDetail a, Portfolio b, Template c, Account d WHERE a.IDPortf = b.IDPortf and b.IDTem = c.IDTem and b.IDAcc = d.IDAcc) \n"
                 + "  as Paging WHERE\n"
@@ -155,6 +155,9 @@ public class DBContext {
 
                 Portfolio p = new Portfolio();
                 p.setNamePortf(rs.getString("NamePortf"));
+                p.setIDPortf(rs.getInt("IDPortf"));
+                p.setIDAcc(rs.getInt("IDAcc"));
+                p.setIDTem(rs.getInt("IDTem"));
 
                 Template t = new Template();
                 t.setIDTem(rs.getInt("IDTem"));
@@ -282,9 +285,9 @@ public class DBContext {
 
     public ArrayList<PortfolioDetail> pagingSearch(int pageIndex, int pageSize, String field, boolean gender) {
         ArrayList<PortfolioDetail> listPaging = new ArrayList<>();
-        String query = "SELECT IDDetail,NamePortf,NameUser,Field,Gender,Address,Phone,Email,Description,Skill,Project,IDTem,Name,IDAcc,Username,Password,isAdmin \n"
+        String query = "SELECT IDDetail,IDPortf,NamePortf,NameUser,Field,Gender,Address,Phone,Email,Description,Skill,Project,IDTem,Name,IDAcc,Username,Password,isAdmin \n"
                 + "  FROM \n"
-                + "  (SELECT ROW_NUMBER() OVER (ORDER BY IDDetail ASC) as rownum,a.IDDetail,b.NamePortf, a.NameUser,a.Field,a.Gender,a.Address,a.Phone,a.Email,\n"
+                + "  (SELECT ROW_NUMBER() OVER (ORDER BY IDDetail ASC) as rownum,a.IDDetail,a.IDPortf,b.NamePortf, a.NameUser,a.Field,a.Gender,a.Address,a.Phone,a.Email,\n"
                 + "  a.Description,a.Skill,a.Project,c.IDTem,c.Name,d.IDAcc,d.Username,d.Password,d.isAdmin\n"
                 + "  FROM PortfolioDetail a, Portfolio b, Template c, Account d WHERE a.IDPortf = b.IDPortf and b.IDTem = c.IDTem and b.IDAcc = d.IDAcc AND Gender = ? AND Field LIKE ?) \n"
                 + "  as Paging WHERE\n"
@@ -315,6 +318,9 @@ public class DBContext {
 
                 Portfolio p = new Portfolio();
                 p.setNamePortf(rs.getString("NamePortf"));
+                p.setIDPortf(rs.getInt("IDPortf"));
+                p.setIDAcc(rs.getInt("IDAcc"));
+                p.setIDTem(rs.getInt("IDTem"));
 
                 Template t = new Template();
                 t.setIDTem(rs.getInt("IDTem"));
@@ -343,9 +349,9 @@ public class DBContext {
 
     public ArrayList<PortfolioDetail> pagingSearchByGender(int pageIndex, int pageSize, boolean gender) {
         ArrayList<PortfolioDetail> listPaging = new ArrayList<>();
-        String query = "SELECT IDDetail,NamePortf,NameUser,Field,Gender,Address,Phone,Email,Description,Skill,Project,IDTem,Name,IDAcc,Username,Password,isAdmin \n"
+        String query = "SELECT IDDetail,IDPortf,NamePortf,NameUser,Field,Gender,Address,Phone,Email,Description,Skill,Project,IDTem,Name,IDAcc,Username,Password,isAdmin \n"
                 + "  FROM \n"
-                + "  (SELECT ROW_NUMBER() OVER (ORDER BY IDDetail ASC) as rownum,a.IDDetail,b.NamePortf, a.NameUser,a.Field,a.Gender,a.Address,a.Phone,a.Email,\n"
+                + "  (SELECT ROW_NUMBER() OVER (ORDER BY IDDetail ASC) as rownum,a.IDDetail,a.IDPortf,b.NamePortf, a.NameUser,a.Field,a.Gender,a.Address,a.Phone,a.Email,\n"
                 + "  a.Description,a.Skill,a.Project,c.IDTem,c.Name,d.IDAcc,d.Username,d.Password,d.isAdmin\n"
                 + "  FROM PortfolioDetail a, Portfolio b, Template c, Account d WHERE a.IDPortf = b.IDPortf and b.IDTem = c.IDTem and b.IDAcc = d.IDAcc AND Gender = ? ) \n"
                 + "  as Paging WHERE\n"
@@ -374,6 +380,9 @@ public class DBContext {
 
                 Portfolio p = new Portfolio();
                 p.setNamePortf(rs.getString("NamePortf"));
+                p.setIDPortf(rs.getInt("IDPortf"));
+                p.setIDAcc(rs.getInt("IDAcc"));
+                p.setIDTem(rs.getInt("IDTem"));
 
                 Template t = new Template();
                 t.setIDTem(rs.getInt("IDTem"));
@@ -402,9 +411,9 @@ public class DBContext {
 
     public ArrayList<PortfolioDetail> pagingSearchByField(int pageIndex, int pageSize, String field) {
         ArrayList<PortfolioDetail> listPaging = new ArrayList<>();
-        String query = "SELECT IDDetail,NamePortf,NameUser,Field,Gender,Address,Phone,Email,Description,Skill,Project,IDTem,Name,IDAcc,Username,Password,isAdmin \n"
+        String query = "SELECT IDDetail,IDPortf,NamePortf,NameUser,Field,Gender,Address,Phone,Email,Description,Skill,Project,IDTem,Name,IDAcc,Username,Password,isAdmin \n"
                 + "  FROM \n"
-                + "  (SELECT ROW_NUMBER() OVER (ORDER BY IDDetail ASC) as rownum,a.IDDetail,b.NamePortf, a.NameUser,a.Field,a.Gender,a.Address,a.Phone,a.Email,\n"
+                + "  (SELECT ROW_NUMBER() OVER (ORDER BY IDDetail ASC) as rownum,a.IDDetail,a.IDPortf,b.NamePortf, a.NameUser,a.Field,a.Gender,a.Address,a.Phone,a.Email,\n"
                 + "  a.Description,a.Skill,a.Project,c.IDTem,c.Name,d.IDAcc,d.Username,d.Password,d.isAdmin\n"
                 + "  FROM PortfolioDetail a, Portfolio b, Template c, Account d WHERE a.IDPortf = b.IDPortf and b.IDTem = c.IDTem and b.IDAcc = d.IDAcc and Field like ?) \n"
                 + "  as Paging WHERE\n"
@@ -433,6 +442,9 @@ public class DBContext {
 
                 Portfolio p = new Portfolio();
                 p.setNamePortf(rs.getString("NamePortf"));
+                p.setIDPortf(rs.getInt("IDPortf"));
+                p.setIDAcc(rs.getInt("IDAcc"));
+                p.setIDTem(rs.getInt("IDTem"));
 
                 Template t = new Template();
                 t.setIDTem(rs.getInt("IDTem"));
@@ -495,9 +507,9 @@ public class DBContext {
 
     public ArrayList<PortfolioDetail> pagingSearchByAccount(int pageIndex, int pageSize, int idAcc) {
         ArrayList<PortfolioDetail> listPaging = new ArrayList<>();
-        String query = "SELECT IDDetail,NamePortf,NameUser,Field,Gender,Address,Phone,Email,Description,Skill,Project,IDTem,Name,IDAcc,Username,Password,isAdmin \n"
+        String query = "SELECT IDDetail,IDPortf,NamePortf,NameUser,Field,Gender,Address,Phone,Email,Description,Skill,Project,IDTem,Name,IDAcc,Username,Password,isAdmin \n"
                 + "  FROM \n"
-                + "  (SELECT ROW_NUMBER() OVER (ORDER BY IDDetail ASC) as rownum,a.IDDetail,b.NamePortf, a.NameUser,a.Field,a.Gender,a.Address,a.Phone,a.Email,\n"
+                + "  (SELECT ROW_NUMBER() OVER (ORDER BY IDDetail ASC) as rownum,a.IDDetail,a.IDPortf,b.NamePortf, a.NameUser,a.Field,a.Gender,a.Address,a.Phone,a.Email,\n"
                 + "  a.Description,a.Skill,a.Project,c.IDTem,c.Name,d.IDAcc,d.Username,d.Password,d.isAdmin\n"
                 + "  FROM PortfolioDetail a, Portfolio b, Template c, Account d WHERE a.IDPortf = b.IDPortf and b.IDTem = c.IDTem and b.IDAcc = d.IDAcc "
                 + "AND b.IDAcc = ?) \n"
@@ -528,6 +540,9 @@ public class DBContext {
 
                 Portfolio p = new Portfolio();
                 p.setNamePortf(rs.getString("NamePortf"));
+                p.setIDPortf(rs.getInt("IDPortf"));
+                p.setIDAcc(rs.getInt("IDAcc"));
+                p.setIDTem(rs.getInt("IDTem"));
 
                 Template t = new Template();
                 t.setIDTem(rs.getInt("IDTem"));
@@ -578,9 +593,9 @@ public class DBContext {
 
     public PortfolioDetail getPDTByIDPD(int idPD) {
         PortfolioDetail pdt = new PortfolioDetail();
-        String query = "SELECT IDDetail,NamePortf,NameUser,Field,Gender,Address,Phone,Email,Description,Skill,Project,IDTem,Name,IDAcc,Username,Password,isAdmin \n"
+        String query = "SELECT IDDetail,IDPortf,NamePortf,NameUser,Field,Gender,Address,Phone,Email,Description,Skill,Project,IDTem,Name,IDAcc,Username,Password,isAdmin \n"
                 + "  FROM \n"
-                + "  (SELECT ROW_NUMBER() OVER (ORDER BY IDDetail ASC) as rownum,a.IDDetail,b.NamePortf, a.NameUser,a.Field,a.Gender,a.Address,a.Phone,a.Email,\n"
+                + "  (SELECT ROW_NUMBER() OVER (ORDER BY IDDetail ASC) as rownum,a.IDDetail,a.IDPortf,b.NamePortf, a.NameUser,a.Field,a.Gender,a.Address,a.Phone,a.Email,\n"
                 + "  a.Description,a.Skill,a.Project,c.IDTem,c.Name,d.IDAcc,d.Username,d.Password,d.isAdmin\n"
                 + "  FROM PortfolioDetail a, Portfolio b, Template c, Account d WHERE a.IDPortf = b.IDPortf and b.IDTem = c.IDTem and b.IDAcc = d.IDAcc "
                 + "AND a.IDDetail = ?) \n"
@@ -607,6 +622,9 @@ public class DBContext {
 
                 Portfolio p = new Portfolio();
                 p.setNamePortf(rs.getString("NamePortf"));
+                p.setIDPortf(rs.getInt("IDPortf"));
+                p.setIDAcc(rs.getInt("IDAcc"));
+                p.setIDTem(rs.getInt("IDTem"));
 
                 Template t = new Template();
                 t.setIDTem(rs.getInt("IDTem"));
@@ -632,12 +650,12 @@ public class DBContext {
         return null;
     }
 
-    public void updateP(PortfolioDetail pdt) {
+    public void updateP(PortfolioDetail pdt, int idP) {
         String query = "UPDATE Portfolio SET NamePortf = ? WHERE IDPortf = ?";
         try {
             stm = connection.prepareCall(query);
             stm.setString(1, pdt.getPortfolio().getNamePortf());
-            stm.setInt(2, pdt.getPortfolio().getIDPortf());
+            stm.setInt(2, idP);
             stm.executeUpdate();
 
         } catch (SQLException ex) {
@@ -645,7 +663,7 @@ public class DBContext {
         }
     }
 
-    public void updatePDT(PortfolioDetail pdt) {
+    public void updatePDT(PortfolioDetail pdt, int idPD) {
         String query = " UPDATE PortfolioDetail SET Address = ?, Description = ?, Email = ?, Field = ?, "
                 + "Gender = ?, NameUser = ?, Phone = ?, Project = ?,\n"
                 + "  Skill = ? WHERE IDDetail = ?";
@@ -661,7 +679,7 @@ public class DBContext {
             stm.setLong(7, pdt.getPhone());
             stm.setString(8, pdt.getProject());
             stm.setString(9, pdt.getSkill());
-            stm.setInt(10, pdt.getIDDetail());
+            stm.setInt(10, idPD);
             stm.executeUpdate();
 
         } catch (SQLException ex) {
@@ -670,61 +688,64 @@ public class DBContext {
 
     }
     
-    public PortfolioDetail getPDTByIDPDHome(int idPD) {
-        PortfolioDetail pdt = new PortfolioDetail();
-        String query = "SELECT IDDetail,NamePortf,NameUser,Field,Gender,Address,Phone,Email,Description,Skill,Project,IDTem,Name,IDAcc,Username,Password,isAdmin \n"
-                + "  FROM \n"
-                + "  (SELECT ROW_NUMBER() OVER (ORDER BY IDDetail ASC) as rownum,a.IDDetail,b.NamePortf, a.NameUser,a.Field,a.Gender,a.Address,a.Phone,a.Email,\n"
-                + "  a.Description,a.Skill,a.Project,c.IDTem,c.Name,d.IDAcc,d.Username,d.Password,d.isAdmin\n"
-                + "  FROM PortfolioDetail a, Portfolio b, Template c, Account d WHERE a.IDPortf = b.IDPortf and b.IDTem = c.IDTem and b.IDAcc = d.IDAcc "
-                + "AND a.IDDetail = ?) \n"
-                + "  as Paging ";
-
-        try {
-            stm = connection.prepareStatement(query);
-            stm.setInt(1, idPD);
-
-            ResultSet rs = stm.executeQuery();
-
-            while (rs.next()) {
-
-                pdt.setIDDetail(rs.getInt("IDDetail"));
-                pdt.setNameUser(rs.getString("NameUser"));
-                pdt.setField(rs.getString("Field"));
-                pdt.setGender(rs.getBoolean("Gender"));
-                pdt.setAddress(rs.getString("Address"));
-                pdt.setPhone(rs.getLong("Phone"));
-                pdt.setEmail(rs.getString("Email"));
-                pdt.setDescription(rs.getString("Description"));
-                pdt.setSkill(rs.getString("Skill"));
-                pdt.setProject(rs.getString("Project"));
-
-                Portfolio p = new Portfolio();
-                p.setNamePortf(rs.getString("NamePortf"));
-
-                Template t = new Template();
-                t.setIDTem(rs.getInt("IDTem"));
-                t.setName(rs.getString("Name"));
-
-                Account a = new Account();
-                a.setIDAcc(rs.getInt("IDAcc"));
-                a.setUsername(rs.getString("Username"));
-                a.setPassword(rs.getString("Password"));
-                a.setIsAdmin(rs.getBoolean("isAdmin"));
-
-                pdt.setAccount(a);
-                pdt.setPortfolio(p);
-                pdt.setTemplate(t);
-
-                return pdt;
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return null;
-    }
+//    public PortfolioDetail getPDTByIDPDHome(int idPD) {
+//        PortfolioDetail pdt = new PortfolioDetail();
+//        String query = "SELECT IDDetail,IDPortf,NamePortf,NameUser,Field,Gender,Address,Phone,Email,Description,Skill,Project,IDTem,Name,IDAcc,Username,Password,isAdmin \n"
+//                + "  FROM \n"
+//                + "  (SELECT ROW_NUMBER() OVER (ORDER BY IDDetail ASC) as rownum,a.IDDetail,a.IDPortf,b.NamePortf, a.NameUser,a.Field,a.Gender,a.Address,a.Phone,a.Email,\n"
+//                + "  a.Description,a.Skill,a.Project,c.IDTem,c.Name,d.IDAcc,d.Username,d.Password,d.isAdmin\n"
+//                + "  FROM PortfolioDetail a, Portfolio b, Template c, Account d WHERE a.IDPortf = b.IDPortf and b.IDTem = c.IDTem and b.IDAcc = d.IDAcc "
+//                + "AND a.IDDetail = ?) \n"
+//                + "  as Paging ";
+//
+//        try {
+//            stm = connection.prepareStatement(query);
+//            stm.setInt(1, idPD);
+//
+//            ResultSet rs = stm.executeQuery();
+//
+//            while (rs.next()) {
+//
+//                pdt.setIDDetail(rs.getInt("IDDetail"));
+//                pdt.setNameUser(rs.getString("NameUser"));
+//                pdt.setField(rs.getString("Field"));
+//                pdt.setGender(rs.getBoolean("Gender"));
+//                pdt.setAddress(rs.getString("Address"));
+//                pdt.setPhone(rs.getLong("Phone"));
+//                pdt.setEmail(rs.getString("Email"));
+//                pdt.setDescription(rs.getString("Description"));
+//                pdt.setSkill(rs.getString("Skill"));
+//                pdt.setProject(rs.getString("Project"));
+//
+//                Portfolio p = new Portfolio();
+//                p.setNamePortf(rs.getString("NamePortf"));
+//                p.setIDPortf(rs.getInt("IDPortf"));
+//                p.setIDAcc(rs.getInt("IDAcc"));
+//                p.setIDTem(rs.getInt("IDTem"));
+//                
+//                Template t = new Template();
+//                t.setIDTem(rs.getInt("IDTem"));
+//                t.setName(rs.getString("Name"));
+//
+//                Account a = new Account();
+//                a.setIDAcc(rs.getInt("IDAcc"));
+//                a.setUsername(rs.getString("Username"));
+//                a.setPassword(rs.getString("Password"));
+//                a.setIsAdmin(rs.getBoolean("isAdmin"));
+//
+//                pdt.setAccount(a);
+//                pdt.setPortfolio(p);
+//                pdt.setTemplate(t);
+//
+//                return pdt;
+//            }
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        return null;
+//    }
     
     public void deletePD(int idPD){
         String query = "DELETE FROM PortfolioDetail WHERE IDDetail = ?";

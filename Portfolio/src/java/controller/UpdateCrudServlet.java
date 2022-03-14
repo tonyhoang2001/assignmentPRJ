@@ -108,6 +108,7 @@ public class UpdateCrudServlet extends HttpServlet {
             genderString = "Male";
         }
         
+        session.setAttribute("account", account);
         session.setAttribute("idPD", idPD);
         session.setAttribute("name", name);
         session.setAttribute("gender", genderString);
@@ -211,11 +212,25 @@ public class UpdateCrudServlet extends HttpServlet {
         PortfolioDetail pdAdd = new PortfolioDetail(name, gender, des, field, skill, project,
                 address, phone, email, p, account, t);
         
-        db.updatePDT(pdAdd);
-        db.updateP(pdAdd);
+        db.updatePDT(pdAdd, pdt.getIDDetail());
+        db.updateP(pdAdd, pdt.getPortfolio().getIDPortf());
         
         session.setAttribute("account", account);
-        request.setAttribute("message", "Create successfully!");
+        session.setAttribute("message", "Update successfully!");
+        session.setAttribute("name", name);
+        session.setAttribute("gender", genderString);
+        session.setAttribute("field", field);
+        session.setAttribute("des", des);
+        session.setAttribute("skill1", skill1);
+        session.setAttribute("skill2", skill2);
+        session.setAttribute("skill3", skill3);
+        session.setAttribute("project1", project1);
+        session.setAttribute("project2", project2);
+        session.setAttribute("project3", project3);
+        session.setAttribute("address", address);
+        session.setAttribute("phone", phone);
+        session.setAttribute("email", email);
+        session.setAttribute("namePortf", namePortf);
         
         if (idTem == 1){
             request.getRequestDispatcher("patrixEdit.jsp").forward(request, response);

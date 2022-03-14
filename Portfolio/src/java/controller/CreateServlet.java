@@ -109,7 +109,20 @@ public class CreateServlet extends HttpServlet {
         db.insertPorftDetail(pdAdd);
         
         session.setAttribute("account", accDB);
-        request.setAttribute("message", "Create successfully!");
+        session.setAttribute("message", "Create successfully!");
+        session.setAttribute("gender", genderString);
+        session.setAttribute("field", field);
+        session.setAttribute("des", des);
+        session.setAttribute("skill1", skill1);
+        session.setAttribute("skill2", skill2);
+        session.setAttribute("skill3", skill3);
+        session.setAttribute("project1", project1);
+        session.setAttribute("project2", project2);
+        session.setAttribute("project3", project3);
+        session.setAttribute("address", address);
+        session.setAttribute("phone", phone);
+        session.setAttribute("email", email);
+        session.setAttribute("namePortf", namePortf);
         
         if (idTem == 1){
             request.getRequestDispatcher("patrixTemplate.jsp").forward(request, response);

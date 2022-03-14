@@ -17,6 +17,15 @@
         <script src="https://kit.fontawesome.com/563c930a8f.js" crossorigin="anonymous"></script>
     </head>
     <body>
+        
+        <%
+            String message = (String) session.getAttribute("messsage");
+            if (message != null) {
+        %>
+        <script>
+            window.alert(message);
+        </script>
+        <% } %>
 
         <header>
             <h2 id="text-header">Portfolio</h2>
@@ -27,7 +36,7 @@
                 <li><a href="#project">Project</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <a id="back-homepage" href="home.jsp">
+            <a id="back-homepage" href="HomeServlet">
                 <--- Back To Home Page</a>
         </header>
 
@@ -35,29 +44,29 @@
             <form id="form" method="POST" action="CreateServlet?id=2">
                 <!-- home -->
                 <div id="home">
-                    <img src="../img/Elen/default.png" alt="">
+                    <img src="img/default.png" alt="">
                     <h3>Hello, I'm</h3>
-                    <input id="inputName" type="text" name="name" placeholder="Your Name" required> *<br><br>
+                    <input id="inputName" type="text" value="${name}" name="name" placeholder="Your Name" required> *<br><br>
 
                     <p id="gender-label">Gender:</p>
                     <select name="gender" id="gender" required>
-                        <option value="0">Female</option>
-                        <option value="1">Male</option>
+                        <option value="0" ${gender == "Female" ? "selected" : ""} >Female</option>
+                        <option value="1" ${gender == "Male" ? "selected" : ""} >Male</option>
                     </select> *<br><br>
 
-                    <input id="field" type="text" name="field" placeholder="Your Field (Job)" required> * 
+                    <input id="field" type="text" value="${field}" name="field" placeholder="Your Field (Job)" required> * 
                     <br>
                     <br>
-                    <input id="inputDes" type="text" name="des" placeholder="Describe about yourself...">
+                    <input id="inputDes" type="text" value="${des}" name="des" placeholder="Describe about yourself...">
                 </div>
 
                 <!-- skill -->
                 <div id="skill">
                     <h2>Skills In Your Career (Optional)</h2>
                     <ul id="skill-list">
-                        <li><input type="text" name="skill1" placeholder="Skill 1"></li>
-                        <li><input type="text" name="skill2" placeholder="Skill 2"></li>
-                        <li><input type="text" name="skill3" placeholder="Skill 3"></li>
+                        <li><input type="text" value="${skill1}" name="skill1" placeholder="Skill 1"></li>
+                        <li><input type="text" value="${skill2}" name="skill2" placeholder="Skill 2"></li>
+                        <li><input type="text" value="${skill3}" name="skill3" placeholder="Skill 3"></li>
                     </ul>
                 </div>
 
@@ -65,9 +74,9 @@
                 <div id="project">
                     <h2>Projects (Optional)</h2>
                     <ul id="project-list">
-                        <li><input type="text" name="project1" placeholder="Project 1"></li>
-                        <li><input type="text" name="project2" placeholder="Project 2"></li>
-                        <li><input type="text" name="project3" placeholder="Project 3"></li>
+                        <li><input type="text" value="${project1}" name="project1" placeholder="Project 1"></li>
+                        <li><input type="text" value="${project2}" name="project2" placeholder="Project 2"></li>
+                        <li><input type="text" value="${project3}" name="project3" placeholder="Project 3"></li>
                     </ul>
                 </div>
 
@@ -78,24 +87,23 @@
                         <li>
                             <i class="fa-solid fa-location-dot"></i>
                             <h3>Address:</h3>
-                            <input type="text" name="address" placeholder="Address">
+                            <input type="text" value="${address}" name="address" placeholder="Address">
                         </li>
                         <li>
                             <i class="fa-solid fa-phone"></i>
                             <h3>Phone: </h3>
-                            <input type="number" name="phone" placeholder="Phonenumber" required> *
+                            <input type="number" value="${phone}" name="phone" placeholder="Phonenumber" required> *
                         </li>
                         <li>
                             <i class="fa-solid fa-envelope"></i>
                             <h3>Email:</h3>
-                            <input type="email" name="email" placeholder="Email" required> *
+                            <input type="email" value="${email}" name="email" placeholder="Email" required> *
                         </li>
                     </ul>
                 </div>
-                <input id="name-portf" type="text" name="namePortf" placeholder="Name your Portfolio" required=""> * <br><br>
+                <input id="name-portf" type="text" value="${namePortf}" name="namePortf" placeholder="Name your Portfolio" required=""> * <br><br>
+                
                 <br>
-                <p style="color: green;margin-left: 466px;">${message}</p>
-                <br><br>
                 <input id="btn-form" type="submit" value="Create">
             </form>
         </main>

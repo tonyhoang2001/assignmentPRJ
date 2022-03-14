@@ -43,7 +43,7 @@ public class ViewServlet extends HttpServlet {
         Account account = (Account) session.getAttribute("account");
 
         DBContext db = new DBContext();
-        PortfolioDetail pdt = db.getPDTByIDPDHome( idPDT);
+        PortfolioDetail pdt = db.getPDTByIDPD(idPDT);
 
         String name = pdt.getNameUser();
         boolean gender = pdt.isGender();
