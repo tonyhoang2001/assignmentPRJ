@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+}
+
+header {
+    height: 70px;
+    width: 100vw;
+    background: rgba(89, 165, 255, 1.0);
+    background: -webkit-radial-gradient(top left, rgba(89, 165, 255, 1.0), rgba(108, 251, 82, 1.0));
+    background: -moz-radial-gradient(top left, rgba(89, 165, 255, 1.0), rgba(108, 251, 82, 1.0));
+    background: radial-gradient(to bottom right, rgba(89, 165, 255, 1.0), rgba(108, 251, 82, 1.0));
+    position: fixed;
+    z-index: 1;
+}
+
+header h1 {
+    display: inline-block;
+    color: white;
+    font-size: 30px;
+}
+
+header h1:hover {
+    cursor: pointer;
+}
+
+.nav li a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+
+}
+
+.nav li {
+    display: inline-block;
+    padding: 16px 20px;
+}
+
+
+.acc li {
+    list-style: none;
+}
+
+.acc li a {
+    text-decoration: none;
+    color: black;
+}
+
+.acc img {
+    height: 50px;
+    position: absolute;
+    top: 10px;
+    right: 250px;
+    border-radius: 50px;
+}
+
+#user-name {
+    position: absolute;
+    top: 13px;
+    right: 165px;
+    font-size: 20px;
+}
+
+#logout {
+    position: absolute;
+    top: 21px;
+    right: 75px;
+    font-size: 19px;    
+    color: #0324b2;
+    font-weight: bold;
+    display: none;
+}
+
+#down {
+    font-size: 22px;
+    position: absolute;
+    right: 153px;
+    top: 24px;
+    /* display: none; */
+}
+
+#right {
+    font-size: 22px;
+    position: absolute;
+    right: 153px;
+    top: 26px;
+    display: none;
+}
+
+#acc-name:hover{
+    cursor: pointer;
+    color: rgb(71, 71, 71);
+}
+
+.nav li a:hover {
+    color: rgb(129, 255, 129);
+}
+
+.nav li h1 {
+    color: rgb(246, 255, 116);
+}
+
+.nav li h1:hover {
+    color: rgba(246, 255, 116, 0.9);
+}
+/*--------------------- MAIN ------------*/
+main {
+    width: 100vw;
+    height: 1000px;
+    background-color: azure;
+    /* padding: 140px 50px 0 50px; */
+    padding-top: 140px;
+}
+
+#cTable {
+    margin: auto;
+}
+
+#error{
+    color: red;
+    text-align: center;
+}
+
+#successU, #successD {
+    color: green;
+    text-align: center;
+}
+#successC {
+    margin-left: 705px;
+    color: green;
+}
+
+
+#createAcc {
+    margin-left: 47px;
+    background-color: #19fb6f;
+    width: 178px;
+    padding: 8px;
+    border-radius: 41px;
+}
+
+#createAcc a {
+    color: black;
+}
+
+#createAcc a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+main table {
+    background-color: rgb(236, 255, 125);
+    padding: 10px;
+}
+
+table td {
+    padding: 10px;
+}
+
+.div-3 {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 80px;
+}
+
+tr td:first-child, .crud td{
+    font-weight: bold;
+}
+
+td input {
+    padding: 5px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.page-index {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.page-index a {
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    background-color: #a8d5fd;
+    text-decoration: none;    
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    font-size: 19px;
+}
+
+.page-index a:hover {
+    background-color: #35ed35;
+    color: #000000;
+    text-decoration: none;
+}
+
+.page-index a.active {
+    background-color: #35ed35;
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/*------------footer-------------------*/
+.footer {
+    height: 200px;
+    background-color: rgba(196, 196, 196, 1);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.f-left h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.f-left i {
+    font-size: 19px;
+    margin-left: 20px;
+}
+
+.f-right #icon {
+    margin-left: 65px;
+    margin-bottom: 20px;
+}
+
+.f-right #icon i {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.f-right > p {
+    font-size: 18px;
+}

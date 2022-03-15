@@ -22,6 +22,8 @@
     </head>
     <body>
 
+        <% int fieldID = 0; %>
+
         <header>
             <ul class="nav">
                 <li>
@@ -31,6 +33,9 @@
                 <li><a href="create.jsp">Create Portfolio</a></li>
                 <li><a href="viewPortServlet">Your Portfolio</a></li>
                 <li><a href="contact.jsp">Contact Us</a></li>
+                    <c:if test="${account.isIsAdmin()==true}">
+                    <li><a href="AccountServlet">Accounts</a></li>
+                    </c:if>
             </ul>
 
             <ul class="acc">
@@ -59,6 +64,9 @@
                                 int indexField = (Integer) session.getAttribute("indexField");
                                 for (Field field : fieldList) {
                                     String selected = (field.getKey() == indexField) ? "selected" : "";
+                                    if ("selected".equals(selected)) {
+                                        fieldID = field.getKey();
+                                    }
                             %>
                             <option <%= selected%> value="<%= field.getKey()%>"><%= field.getName()%></option>
                             <% } %>
@@ -109,12 +117,12 @@
 
                                     <div class="crud-admin">
                                         <a class="view" href="ViewServlet?id=${portfolio.getIDDetail()}">View</a>
-                                        
+
                                         <c:if test="${account.isIsAdmin()==true}">
                                             <a class="update" href="UpdateServlet?id=${portfolio.getIDDetail()}">Edit</a>
                                             <a class="delete" onclick="Delete()" href="DeleteServlet?id=${portfolio.getIDDetail()}">Delete</a>
                                         </c:if>
-                                            
+
                                     </div>
 
                                 </div>
@@ -139,12 +147,12 @@
 
                                     <div class="crud-admin">
                                         <a class="view" href="ViewServlet?id=${portfolio.getIDDetail()}">View</a>
-                                        
+
                                         <c:if test="${account.isIsAdmin()==true}">
                                             <a class="update" href="UpdateServlet?id=${portfolio.getIDDetail()}">Edit</a>
                                             <a class="delete" onclick="Delete()" href="DeleteServlet?id=${portfolio.getIDDetail()}">Delete</a>
                                         </c:if>
-                                            
+
                                     </div>
                                 </div>
                             </c:forEach>
@@ -159,7 +167,7 @@
 
                 <div class="page-index">
                     <c:forEach begin="1" end="${endPage}" var="i">
-                        <a class="${activeIndex == i ? "active" : ""}" href="HomeServlet?index=${i}">${i}</a>
+                        <a class="${activeIndex == i ? "active" : ""}" href="HomeServlet?index=${i}&sex=<%= gender%>&job=<%= fieldID%>">${i}</a>
                     </c:forEach>
                 </div>
 

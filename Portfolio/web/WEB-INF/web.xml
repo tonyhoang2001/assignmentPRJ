@@ -60,6 +60,22 @@
         <servlet-name>DeleteCrudServlet</servlet-name>
         <servlet-class>controller.DeleteCrudServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AccountServlet</servlet-name>
+        <servlet-class>controller.AccountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateAccount</servlet-name>
+        <servlet-class>controller.UpdateAccount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteAccount</servlet-name>
+        <servlet-class>controller.DeleteAccount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateAccount</servlet-name>
+        <servlet-class>controller.CreateAccount</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -103,6 +119,22 @@
     <servlet-mapping>
         <servlet-name>DeleteCrudServlet</servlet-name>
         <url-pattern>/DeleteCrudServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccountServlet</servlet-name>
+        <url-pattern>/AccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateAccount</servlet-name>
+        <url-pattern>/UpdateAccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteAccount</servlet-name>
+        <url-pattern>/DeleteAccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateAccount</servlet-name>
+        <url-pattern>/CreateAccount</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

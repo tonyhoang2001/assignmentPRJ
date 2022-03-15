@@ -17,15 +17,6 @@
         <script src="https://kit.fontawesome.com/563c930a8f.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        
-        <%
-            String message = (String) session.getAttribute("messsage");
-            if (message != null) {
-        %>
-        <script>
-            window.alert(message);
-        </script>
-        <% } %>
 
         <header>
             <h2 id="text-header">Portfolio</h2>
@@ -102,9 +93,9 @@
                     </ul>
                 </div>
                 <input id="name-portf" type="text" value="${namePortf}" name="namePortf" placeholder="Name your Portfolio" required=""> * <br><br>
-                
+
                 <br>
-                <input id="btn-form" type="submit" value="Create">
+                <input id="btn-form" onclick="success()" type="submit" value="Create">
             </form>
         </main>
 
@@ -127,6 +118,12 @@
                 </div>
             </div>
         </footer>
+
+        <script>
+            function success() {
+                alert("Create successfully!")
+            }
+        </script>
 
     </body>
 </html>

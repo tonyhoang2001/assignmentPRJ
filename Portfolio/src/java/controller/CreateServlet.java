@@ -51,7 +51,38 @@ public class CreateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+        String idString = request.getParameter("id");
+        int idTem = Integer.parseInt(idString);
+
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("account");
+
+        session.setAttribute("account", account);
+        session.setAttribute("gender", "Female");
+        session.setAttribute("field", "");
+        session.setAttribute("des", "");
+        session.setAttribute("skill1", "");
+        session.setAttribute("skill2", "");
+        session.setAttribute("skill3", "");
+        session.setAttribute("project1", "");
+        session.setAttribute("project2", "");
+        session.setAttribute("project3", "");
+        session.setAttribute("address", "");
+        session.setAttribute("phone", "");
+        session.setAttribute("email", "");
+        session.setAttribute("namePortf", "");
+        session.setAttribute("name", "");
+
+        if (idTem == 1) {
+            request.getRequestDispatcher("patrixTemplate.jsp").forward(request, response);
+            return;
+        }
+
+        if (idTem == 2) {
+            request.getRequestDispatcher("ElenTemplate.jsp").forward(request, response);
+            return;
+        }
     }
 
     /**
@@ -65,6 +96,7 @@ public class CreateServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String idString = request.getParameter("id");
         String name = request.getParameter("name");
         String genderString = request.getParameter("gender");
@@ -104,10 +136,10 @@ public class CreateServlet extends HttpServlet {
         Template t = db.getTemplateByID(idTem);
         PortfolioDetail pdAdd = new PortfolioDetail(name, gender, des, field, skill, project,
                 address, phone, email, p, accDB, t);
-        
+
         db.insertPortf(pdAdd);
         db.insertPorftDetail(pdAdd);
-        
+
         session.setAttribute("account", accDB);
         session.setAttribute("message", "Create successfully!");
         session.setAttribute("gender", genderString);
@@ -123,13 +155,14 @@ public class CreateServlet extends HttpServlet {
         session.setAttribute("phone", phone);
         session.setAttribute("email", email);
         session.setAttribute("namePortf", namePortf);
-        
-        if (idTem == 1){
+        session.setAttribute("name", name);
+
+        if (idTem == 1) {
             request.getRequestDispatcher("patrixTemplate.jsp").forward(request, response);
             return;
         }
-        
-        if (idTem == 2){
+
+        if (idTem == 2) {
             request.getRequestDispatcher("ElenTemplate.jsp").forward(request, response);
             return;
         }

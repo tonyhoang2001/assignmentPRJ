@@ -16,20 +16,12 @@
               integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <!--Import font awesome-->
         <script src="https://kit.fontawesome.com/563c930a8f.js" crossorigin="anonymous"></script>
-        
-        
-        
+
+
+
     </head>
     <body>
-        
-        <%
-            String message = (String) session.getAttribute("messsage");
-            if (message != null) {
-        %>
-        <script>
-            window.alert(message);
-        </script>
-        <% } %>
+
 
         <header>
             <h2 id="text-header">Portfolio</h2>
@@ -44,10 +36,10 @@
                 <--- Back To Home Page</a>
         </header>
 
-        <% 
+        <%
             String gender = (String) session.getAttribute("gender");
         %>
-        
+
         <main>
             <form id="form" method="POST" action="UpdateCrudServlet?idPD=${idPD}">
                 <!-- home -->
@@ -58,9 +50,9 @@
 
                     <p id="gender-label">Gender:</p>
                     <select name="gender" id="gender" required>
-                        <option value="0" <% if(gender.equals("Female") ){ %> selected="" <% }; %>
+                        <option value="0" <% if (gender.equals("Female")) { %> selected="" <% }; %>
                                 >Female</option>
-                        <option value="1" <% if(gender.equals("Male") ){ %> selected="" <% }; %> 
+                        <option value="1" <% if (gender.equals("Male")) { %> selected="" <% };%> 
                                 >Male</option>
                     </select> *<br><br>
 
@@ -111,9 +103,9 @@
                         </li>
                     </ul>
                 </div>
-                        <input id="name-portf" type="text" value="${namePortf}" name="namePortf" placeholder="Name your Portfolio" required=""> * <br><br>
-                
-                <input id="save-form" type="submit" value="Save">
+                <input id="name-portf" type="text" value="${namePortf}" name="namePortf" placeholder="Name your Portfolio" required=""> * <br><br>
+
+                <input id="save-form" onclick="success()" type="submit" value="Save">
                 <input id="undo-form" type="reset" value="Undo">
             </form>
         </main>
@@ -137,6 +129,12 @@
                 </div>
             </div>
         </footer>
+
+        <script>
+            function success() {
+                alert("Create successfully!")
+            }
+        </script>
 
     </body>
 </html>

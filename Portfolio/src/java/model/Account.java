@@ -21,6 +21,15 @@ public class Account {
         this.isAdmin = isAdmin;
     }
 
+    public Account(int IDAcc, String Username, String Password, boolean isAdmin) {
+        this.IDAcc = IDAcc;
+        this.Username = Username;
+        this.Password = Password;
+        this.isAdmin = isAdmin;
+    }
+    
+    
+
     public Account() {
     }
 

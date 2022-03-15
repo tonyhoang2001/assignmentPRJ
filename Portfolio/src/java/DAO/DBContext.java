@@ -215,15 +215,15 @@ public class DBContext {
 
             if (!resultList.isEmpty()) {
                 int key = 1;
-                for (String string : resultList) {
+                for (int i = 0; i < resultList.size(); i++) {
                     int index = 0;
-                    for (String string1 : resultList) {
-                        if (string.equals(string1)) {
+                    for (int j = i; j >= 0; j--) {
+                        if (resultList.get(j).equals(resultList.get(i))) {
                             index++;
                         }
                     }
                     if (index == 1) {
-                        fieldList.add(new Field(key, string));
+                        fieldList.add(new Field(key, resultList.get(i)));
                         key++;
                     }
                 }
@@ -687,7 +687,7 @@ public class DBContext {
         }
 
     }
-    
+
 //    public PortfolioDetail getPDTByIDPDHome(int idPD) {
 //        PortfolioDetail pdt = new PortfolioDetail();
 //        String query = "SELECT IDDetail,IDPortf,NamePortf,NameUser,Field,Gender,Address,Phone,Email,Description,Skill,Project,IDTem,Name,IDAcc,Username,Password,isAdmin \n"
@@ -746,27 +746,132 @@ public class DBContext {
 //
 //        return null;
 //    }
-    
-    public void deletePD(int idPD){
+    public void deletePD(int idPD) {
         String query = "DELETE FROM PortfolioDetail WHERE IDDetail = ?";
         try {
-            stm =connection.prepareCall(query);
+            stm = connection.prepareCall(query);
             stm.setInt(1, idPD);
             stm.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void deleteP(int idP){
+
+    public void deleteP(int idP) {
         String query = "DELETE FROM Portfolio WHERE IDPortf = ?";
         try {
-            stm =connection.prepareCall(query);
+            stm = connection.prepareCall(query);
             stm.setInt(1, idP);
             stm.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
- 
+
+    public ArrayList<Account> pagingAccount(int pageIndex, int pageSize, int idAcc) {
+        ArrayList<Account> pagingAccs = new ArrayList<>();
+        String query = "select * from \n"
+                + "  (select ROW_NUMBER() over (order by IDAcc asc) as rownum, IDAcc, Username, \n"
+                + "  Password, isAdmin from Account where IDAcc <> ?) as pagingAcc where rownum >= ?\n"
+                + "   and rownum <= ?";
+
+        try {
+            stm = connection.prepareStatement(query);
+            stm.setInt(1, idAcc);
+            stm.setInt(2, (pageIndex - 1) * pageSize + 1);
+            stm.setInt(3, pageIndex * pageSize);
+
+            ResultSet rs = stm.executeQuery();
+
+            while (rs.next()) {
+
+                Account a = new Account();
+                a.setIDAcc(rs.getInt("IDAcc"));
+                a.setUsername(rs.getString("Username"));
+                a.setPassword(rs.getString("Password"));
+                a.setIsAdmin(rs.getBoolean("isAdmin"));
+
+                pagingAccs.add(a);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return pagingAccs;
+    }
+
+    public int countAccounts(int idAcc) {
+        String query = "SELECT count(*) \n"
+                + "  FROM \n"
+                + " Account WHERE IDAcc <> ?";
+
+        try {
+            stm = connection.prepareStatement(query);
+            stm.setInt(1, idAcc);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public void updateAccount(Account account) {
+        String query = "UPDATE Account SET Username = ?, Password = ?, isAdmin = ? WHERE IDAcc = ?";
+
+        try {
+            stm = connection.prepareStatement(query);
+            stm.setString(1, account.getUsername());
+            stm.setString(2, account.getPassword());
+            stm.setBoolean(3, account.isIsAdmin());
+            stm.setInt(4, account.getIDAcc());
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void deleteAccount(int idAcc) {
+        String query = "delete from Account where IDAcc = ?";
+
+        try {
+            stm = connection.prepareStatement(query);
+            stm.setInt(1, idAcc);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void deleteAccountPortf(int idAcc) {
+        String query = "delete from Portfolio where IDPortf in \n"
+                + "   (select IDPortf from Portfolio where IDAcc = ?)";
+
+        try {
+            stm = connection.prepareStatement(query);
+            stm.setInt(1, idAcc);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void deleteAccountDetail(int idAcc) {
+        String query = "delete from PortfolioDetail where IDDetail in \n"
+                + "   ( select IDDetail\n"
+                + "   from PortfolioDetail\n"
+                + "   where IDPortf in (select IDPortf from Portfolio where IDAcc = ?) )";
+
+        try {
+            stm = connection.prepareStatement(query);
+            stm.setInt(1, idAcc);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }
