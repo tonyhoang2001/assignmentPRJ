@@ -873,5 +873,20 @@ public class DBContext {
             Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void getAccountById(int idAcc) {
+        String query = "delete from PortfolioDetail where IDDetail in \n"
+                + "   ( select IDDetail\n"
+                + "   from PortfolioDetail\n"
+                + "   where IDPortf in (select IDPortf from Portfolio where IDAcc = ?) )";
+
+        try {
+            stm = connection.prepareStatement(query);
+            stm.setInt(1, idAcc);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }

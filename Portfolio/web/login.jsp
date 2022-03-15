@@ -45,7 +45,8 @@
                 <h4>Don't have account?</h4>
                 <a href="signup.jsp">Sign up here</a>
             </div>
-            <p style="color: red;margin-top:15px ">${message}</p>
+            <p style="color: red;margin-top:15px ">${messageL}</p>
+            <p style="color: green;margin-top:15px ">${successU}</p>
         </div>
 
     </body>

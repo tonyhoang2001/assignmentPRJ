@@ -8,9 +8,7 @@ package controller;
 import DAO.DBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +19,7 @@ import model.Account;
  *
  * @author LTC
  */
-public class LoginServlet extends HttpServlet {
+public class ChangePass extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,11 +38,10 @@ public class LoginServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CheckLoginServlet</title>");
+            out.println("<title>Servlet ChangePass</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CheckLoginServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h1>day la check login</h1>");
+            out.println("<h1>Servlet ChangePass at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,27 +59,8 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.sendRedirect("changePass.jsp");
         
-//        //check co cookie hay khong
-//        Cookie[] cookies = request.getCookies();
-//
-//        if (cookies != null) {
-//            String Username = null, Password = null;
-//            for (Cookie cooky : cookies) {
-//                if (cooky.getName().equals("Username")) {
-//                    Username = cooky.getValue();
-//                }
-//                if (cooky.getName().equals("Password")) {
-//                    Password = cooky.getValue();
-//                }
-//            }
-//            if (Username != null && Password != null) {
-//                request.getRequestDispatcher("home.jsp").forward(request, response);
-//                return;
-//            }
-//        }
-        
-        response.sendRedirect("login.jsp");
     }
 
     /**
@@ -97,38 +75,34 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("account");
 
-        String Username = request.getParameter("username");
-        String Password = request.getParameter("password");
-        String remember = request.getParameter("remember");
-
-
-        if (Username.length() < 5 || Password.length() < 5) {
-            request.setAttribute("message", "username or password must contain at least 5 characters!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+        String username = request.getParameter("username");
+        String password = request.getParameter("newpassword");
+        String repassword = request.getParameter("renewpassword");
+        
+        if (password.length() < 5){
+            request.setAttribute("error", "Username and password must be greater than 4 characters");
+            request.getRequestDispatcher("changePass.jsp").forward(request, response);
+            return;
+        }
+        
+        if (!password.equals(repassword)){
+            request.setAttribute("error", "Password and re-password must be same.");
+            request.getRequestDispatcher("changePass.jsp").forward(request, response);
             return;
         }
 
+        Account eAccount = new Account(account.getIDAcc(),username, password, account.isIsAdmin());
+
         DBContext db = new DBContext();
-        Account account = db.getAccountByUsername(Username);
-        if (account != null) {
-            if (account.getPassword().equals(Password)) {
-                if (remember != null) {
-                    Cookie username = new Cookie("Username", Username);
-                    Cookie password = new Cookie("Password", Password);
-                    username.setMaxAge(60 * 60 * 24 * 7);
-                    password.setMaxAge(60 * 60 * 24 * 7);
-                    response.addCookie(username);
-                    response.addCookie(password);
-                }
-                HttpSession session = request.getSession();
-                session.setAttribute("account", account);
-                request.getRequestDispatcher("HomeServlet").forward(request, response);
-                return;
-            }
-        }
-        request.setAttribute("messageL", "username or password is not correct!");
+        db.updateAccount(eAccount);
+        
+        request.setAttribute("successU", "Change password successfully! Please sign in again!");
         request.getRequestDispatcher("login.jsp").forward(request, response);
+        
     }
 
     /**

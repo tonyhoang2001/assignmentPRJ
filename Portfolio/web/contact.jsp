@@ -4,6 +4,7 @@
     Author     : LTC
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,9 +25,13 @@
                     <h1>Portfolio Website</h1>
                 </li>
                 <li><a href="HomeServlet">Home</a></li>
-                <li><a href="create.jsp">Create Portfolio</a></li>
+                <li><a href="CreateIn">Create Portfolio</a></li>
                 <li><a href="viewPortServlet">Your Portfolio</a></li>
-                <li><a href="contact.jsp">Contact Us</a></li>
+                <li><a href="Contact">Contact Us</a></li>
+                <c:if test="${account.isIsAdmin()==true}">
+                    <li><a href="AccountServlet">Accounts</a></li>
+                    </c:if>
+                <li><a href="ChangePass">Change password</a> </li>
             </ul>
             
             <ul class="acc">
