@@ -19,7 +19,7 @@
         <script src="https://kit.fontawesome.com/563c930a8f.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        
+
         <header>
             <ul class="nav">
                 <li>
@@ -32,7 +32,7 @@
                     <c:if test="${account.isIsAdmin()==true}">
                     <li><a href="AccountServlet">Accounts</a></li>
                     </c:if>
-                    <li><a href="ChangePass">Change password</a> </li>
+                <li><a href="ChangePass">Change password</a> </li>
             </ul>
 
             <ul class="acc">
@@ -47,20 +47,46 @@
         </header>
 
         <main>
-            
+
             <p id="error">${error}</p>
             <p id="successU">${successU}</p>
             <p id="successD">${successD}</p>
-            
+
             <div id="createAcc">
                 <i class="fa-solid fa-circle-plus"></i>
                 <a href="CreateAccount">Create new account</a>
             </div>
-            
+
             <!-- container -->
             <div class="container">
 
-                <!-- contain 3 div -->
+                <table id="t-crud" border="1">
+                    <tr>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Is Admin</th>
+                        <th></th>
+                    </tr>
+
+                    <c:forEach items="${listPaging}" var="accountItem">
+                        <tr>
+                        <form action="UpdateAccount?idAcc=${accountItem.getIDAcc()}" method="POST">
+                            <td><input type="text" name="username" value="${accountItem.getUsername()}"></td>
+                            <td><input type="text" name="password" value="${accountItem.getPassword()}"></td>
+                            <td><input type="checkbox" name="isAdmin" ${accountItem.isIsAdmin() ? "checked" : "" } ></td>
+                            <td>
+                                <input type="submit"  value="Save Edit">
+                                <input id="u-t-crud" type="reset" value="Undo">
+                                <a onclick="return confirm('Are your sure delete this account?')"
+                                   href="DeleteAccount?id=${accountItem.getIDAcc()}">Delete</a>
+                            </td>
+                        </form>
+                        </tr>
+                    </c:forEach>
+
+                </table>
+
+<!--                 contain 3 div 
                 <div class="div-3">
 
                     <c:forEach items="${listPaging}" var="accountItem" begin="0" end="2">
@@ -93,7 +119,7 @@
                     </c:forEach>
                 </div>
 
-                <!-- contain 3 div -->
+                 contain 3 div 
                 <div class="div-3">
 
                     <c:forEach items="${listPaging}" var="accountItem" begin="3" end="5">
@@ -125,15 +151,15 @@
                         </form>
 
                     </c:forEach>
-                </div>
+                </div>-->
 
             </div>
-            
+
             <div class="page-index">
-                    <c:forEach begin="1" end="${endPage}" var="i">
-                        <a class="${activeIndex == i ? "active" : ""}" href="AccountServlet?index=${i}">${i}</a>
-                    </c:forEach>
-                </div>
+                <c:forEach begin="1" end="${endPage}" var="i">
+                    <a class="${activeIndex == i ? "active" : ""}" href="AccountServlet?index=${i}">${i}</a>
+                </c:forEach>
+            </div>
 
         </main>
 
@@ -157,11 +183,11 @@
             </div>
         </footer>
 
-        <script>
+<!--        <script>
             function warning() {
-                confirm("Are your sure delete this account?")
+                var cf = confirm("Are your sure delete this account?")
             }
-        </script>
+        </script>-->
 
         <script src="js/homepage.js" type="text/javascript"></script>
 

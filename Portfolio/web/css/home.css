@@ -87,6 +87,27 @@ header h1:hover {
     display: none;
 }
 
+#t-crud{
+    width: 100%;
+    border: 2px solid #37d2a4;
+}
+
+#t-crud th{
+    height: 53px;
+    text-align: center;
+    background-color: #ffff76;
+}
+
+#t-crud td{
+    height: 41px;
+    text-align: center;
+    background-color: white;
+}
+
+#t-crud-a {
+    margin: 0 10px;
+}
+
 #down {
     font-size: 22px;
     position: absolute;

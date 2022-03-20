@@ -100,65 +100,80 @@
                 <div class="paging-container">
                     <c:if test="${listPaging != null}">
 
-                        <div class="paging-two">
+                        <c:if test="${account.isIsAdmin()==true}" >
+                            <table id="t-crud" border="1"> 
+                                <tr>
+                                    <th>Name User</th>
+                                    <th>Field</th>
+                                    <th>Address</th>
+                                    <th></th>
+                                </tr>
 
-                            <c:forEach items="${listPaging}" var="portfolio" begin="0" end="1">
-                                <div class="paging-portfolio row" title="Click to see more">
-                                    <!-- avatar -->
-                                    <div class="paging-avatar col-5">
-                                        <img src="img/default.png" alt="avatar">
-                                    </div>
-                                    <!-- infor -->
-                                    <div class="paging-infor col-7">
-                                        <h3>${portfolio.getNameUser()}</h3>
-                                        <p>${portfolio.getField()}</p>
-                                        <p>${portfolio.getAddress()}</p>
-                                    </div>
+                                <!--                                <div class="crud-admin">
+                                                                    <a class="view" href="ViewServlet?id=${portfolio.getIDDetail()}">View</a>
+                                                                </div>-->
 
-
-                                    <div class="crud-admin">
-                                        <a class="view" href="ViewServlet?id=${portfolio.getIDDetail()}">View</a>
-
-                                        <c:if test="${account.isIsAdmin()==true}">
-                                            <a class="update" href="UpdateServlet?id=${portfolio.getIDDetail()}">Edit</a>
+                                <c:forEach items="${crudList}" var="portfolio">
+                                    <tr>
+                                        <td>${portfolio.getNameUser()}</td>
+                                        <td>${portfolio.getField()}</td>
+                                        <td>${portfolio.getAddress()}</td>
+                                        <td>
+                                            <a class="view" href="ViewServlet?id=${portfolio.getIDDetail()}">View</a>
+                                            <a id="t-crud-a" class="update" href="UpdateServlet?id=${portfolio.getIDDetail()}">Edit</a>
                                             <a class="delete" onclick="Delete()" href="DeleteServlet?id=${portfolio.getIDDetail()}">Delete</a>
-                                        </c:if>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
 
+                            </table>
+                        </c:if>
+
+                        <c:if test="${account.isIsAdmin()==false}">
+                            <div class="paging-two">
+
+                                <c:forEach items="${listPaging}" var="portfolio" begin="0" end="1">
+                                    <div class="paging-portfolio row" title="Click to see more">
+                                        <!-- avatar -->
+                                        <div class="paging-avatar col-5">
+                                            <img src="img/default.png" alt="avatar">
+                                        </div>
+                                        <!-- infor -->
+                                        <div class="paging-infor col-7">
+                                            <h3>${portfolio.getNameUser()}</h3>
+                                            <p>${portfolio.getField()}</p>
+                                            <p>${portfolio.getAddress()}</p>
+                                        </div>
+                                        <div class="crud-admin">
+                                            <a class="view" href="ViewServlet?id=${portfolio.getIDDetail()}">View</a>
+                                        </div>
                                     </div>
+                                </c:forEach>
 
-                                </div>
-                            </c:forEach>
+                            </div>
 
-                        </div>
+                            <div class="paging-two">
 
-                        <div class="paging-two">
-
-                            <c:forEach items="${listPaging}" var="portfolio" begin="2" end="3">
-                                <div class="paging-portfolio row" title="Click to see more">
-                                    <!-- avatar -->
-                                    <div class="paging-avatar col-5">
-                                        <img src="img/default.png" alt="avatar">
+                                <c:forEach items="${listPaging}" var="portfolio" begin="2" end="3">
+                                    <div class="paging-portfolio row" title="Click to see more">
+                                        <!-- avatar -->
+                                        <div class="paging-avatar col-5">
+                                            <img src="img/default.png" alt="avatar">
+                                        </div>
+                                        <!-- infor -->
+                                        <div class="paging-infor col-7">
+                                            <h3>${portfolio.getNameUser()}</h3>
+                                            <p>${portfolio.getField()}</p>
+                                            <p>${portfolio.getAddress()}</p>
+                                        </div>
+                                        <div class="crud-admin">
+                                            <a class="view" href="ViewServlet?id=${portfolio.getIDDetail()}">View</a>
+                                        </div>
                                     </div>
-                                    <!-- infor -->
-                                    <div class="paging-infor col-7">
-                                        <h3>${portfolio.getNameUser()}</h3>
-                                        <p>${portfolio.getField()}</p>
-                                        <p>${portfolio.getAddress()}</p>
-                                    </div>
+                                </c:forEach>
 
-                                    <div class="crud-admin">
-                                        <a class="view" href="ViewServlet?id=${portfolio.getIDDetail()}">View</a>
-
-                                        <c:if test="${account.isIsAdmin()==true}">
-                                            <a class="update" href="UpdateServlet?id=${portfolio.getIDDetail()}">Edit</a>
-                                            <a class="delete" onclick="Delete()" href="DeleteServlet?id=${portfolio.getIDDetail()}">Delete</a>
-                                        </c:if>
-
-                                    </div>
-                                </div>
-                            </c:forEach>
-
-                        </div>
+                            </div>
+                        </c:if>
 
                     </c:if>
                     <c:if test="${listPaging.size() == 0}">
@@ -166,11 +181,21 @@
                     </c:if>
                 </div>
 
-                <div class="page-index">
-                    <c:forEach begin="1" end="${endPage}" var="i">
-                        <a class="${activeIndex == i ? "active" : ""}" href="HomeServlet?index=${i}&sex=<%= gender%>&job=<%= fieldID%>">${i}</a>
-                    </c:forEach>
-                </div>
+                <c:if test="${account.isIsAdmin()==true}" >
+                    <div class="page-index">
+                        <c:forEach begin="1" end="${endPage2}" var="i">
+                            <a class="${activeIndex == i ? "active" : ""}" href="HomeServlet?index=${i}&sex=<%= gender%>&job=<%= fieldID%>">${i}</a>
+                        </c:forEach>
+                    </div>
+                </c:if>
+
+                <c:if test="${account.isIsAdmin()==false}" >
+                    <div class="page-index">
+                        <c:forEach begin="1" end="${endPage}" var="i">
+                            <a class="${activeIndex == i ? "active" : ""}" href="HomeServlet?index=${i}&sex=<%= gender%>&job=<%= fieldID%>">${i}</a>
+                        </c:forEach>
+                    </div>
+                </c:if>
 
             </div>
 

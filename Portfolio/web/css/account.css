@@ -117,6 +117,25 @@ main {
     padding-top: 140px;
 }
 
+#t-crud {
+    margin-top: 30px;
+}
+
+#t-crud th {
+    text-align: center;
+    height: 50px;
+    background-color: #98ff91;
+}
+
+#u-t-crud {
+    margin: 0 10px;
+}
+
+#t-crud td {
+    text-align: center;
+    height: 40px;
+}
+
 #cTable {
     margin: auto;
 }

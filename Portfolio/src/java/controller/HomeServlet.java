@@ -68,11 +68,17 @@ public class HomeServlet extends HttpServlet {
             DBContext db = new DBContext();
             ArrayList<Field> fieldList = db.getField();
             ArrayList<PortfolioDetail> listPaging = db.paging(pageIndex, pageSize);
+            ArrayList<PortfolioDetail> crudList = db.paging(pageIndex, 12);
             int count = db.count();
 
-            int endPage = count / 4;
-            if (count % 4 != 0) {
+            int endPage = count / pageSize;
+            if (count % pageSize != 0) {
                 endPage++;
+            }
+            
+            int endPage2 = count / 12;
+            if (count % 12 != 0) {
+                endPage2++;
             }
 
             HttpSession session = request.getSession();
@@ -82,7 +88,9 @@ public class HomeServlet extends HttpServlet {
             session.setAttribute("activeIndex", index);
             session.setAttribute("account", account);
             session.setAttribute("endPage", endPage);
+            session.setAttribute("endPage2", endPage2);
             session.setAttribute("listPaging", listPaging);
+            session.setAttribute("crudList", crudList);
             session.setAttribute("indexField", indexField);
             session.setAttribute("gender", gender);
 
@@ -96,9 +104,11 @@ public class HomeServlet extends HttpServlet {
             String fieldName = "";
             int pageSize = 4;
             int endPage = 0;
+            int endPage2 = 0;
             String index = request.getParameter("index");
             int activeIndex = Integer.parseInt(index);
             ArrayList<PortfolioDetail> listPaging = new ArrayList<>();
+            ArrayList<PortfolioDetail> crudList = new ArrayList<>();
 
             for (Field field1 : fieldList) {
                 if (field1.getKey() == indexField) {
@@ -122,6 +132,13 @@ public class HomeServlet extends HttpServlet {
                 if (count % pageSize != 0) {
                     endPage++;
                 }
+                
+                endPage2 = count / 10;
+                if (count % 12 != 0) {
+                    endPage2++;
+                }
+                
+                crudList = db.pagingSearchByField(activeIndex, 12, fieldName);
                 listPaging = db.pagingSearchByField(activeIndex, pageSize, fieldName);
 
             } //chi search theo gioi tinh
@@ -132,6 +149,12 @@ public class HomeServlet extends HttpServlet {
                 if (count % pageSize != 0) {
                     endPage++;
                 }
+                
+                endPage2 = count / 10;
+                if (count % 12 != 0) {
+                    endPage2++;
+                }
+                crudList = db.pagingSearchByGender(activeIndex, 12, isGender);
                 listPaging = db.pagingSearchByGender(activeIndex, pageSize, isGender);
             } // search theo ca 2
             else {
@@ -141,6 +164,11 @@ public class HomeServlet extends HttpServlet {
                 if (count % pageSize != 0) {
                     endPage++;
                 }
+                endPage2 = count / 10;
+                if (count % 12 != 0) {
+                    endPage2++;
+                }
+                crudList = db.pagingSearch(activeIndex, 12, fieldName, isGender);
                 listPaging = db.pagingSearch(activeIndex, pageSize, fieldName, isGender);
             }
 
@@ -148,10 +176,12 @@ public class HomeServlet extends HttpServlet {
             Account account = (Account) session.getAttribute("account");
 
             session.setAttribute("endPage", endPage);
+            session.setAttribute("endPage2", endPage2);
             session.setAttribute("activeIndex", activeIndex);
             session.setAttribute("fieldList", fieldList);
             session.setAttribute("account", account);
             session.setAttribute("listPaging", listPaging);
+            session.setAttribute("crudList", crudList);
             session.setAttribute("indexField", indexField);
             session.setAttribute("gender", gender);
 
