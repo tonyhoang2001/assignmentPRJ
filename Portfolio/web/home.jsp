@@ -121,7 +121,8 @@
                                         <td>
                                             <a class="view" href="ViewServlet?id=${portfolio.getIDDetail()}">View</a>
                                             <a id="t-crud-a" class="update" href="UpdateServlet?id=${portfolio.getIDDetail()}">Edit</a>
-                                            <a class="delete" onclick="Delete()" href="DeleteServlet?id=${portfolio.getIDDetail()}">Delete</a>
+                                            <a class="delete" onclick="return confirm('Are your sure delete this account?')"
+                                               href="DeleteServlet?id=${portfolio.getIDDetail()}">Delete</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -230,14 +231,14 @@
             </div>
         </footer>
 
-        <script>
+<!--        <script>
             const deletes = document.querySelectorAll('.delete')
             for (d of deletes) {
                 d.addEventListener("click", function () {
                     window.confirm("Are you sure to delete this?")
                 })
             }
-        </script>
+        </script>-->
 
         <script src="js/homepage.js" type="text/javascript"></script>
 
